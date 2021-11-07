@@ -60,9 +60,53 @@
           <form action="{% url 'index' %}" method="post">
               {% csrf_token %}
 
-              {{ ipForm | crispy }}
+              <div class="row m-2">
+                  <div class="col-6">
+                    {{ ipForm.destIP|as_crispy_field }}
+                  </div>
+                  <div class="col-6">
+                    {{ ipForm.destPort|as_crispy_field }}
+                  </div>
+              </div>
 
-              <button  class="btn btn-primary" type="submit">Send</button>
+              <div class="row m-2">
+                  <div class="col-6">
+                    {{ ipForm.srcIP|as_crispy_field }}
+                  </div>
+                  <div class="col-6">
+                    {{ ipForm.srcPort|as_crispy_field }}
+                  </div>
+              </div>
+
+              <div class="row m-2">
+                  <div class="col-6">
+                    {{ ipForm.seqN|as_crispy_field }}
+                  </div>
+                  <div class="col-6">
+                    {{ ipForm.ackN|as_crispy_field }}
+                  </div>
+              </div>
+
+              <div class="row m-2">
+                  <div class="col-6">
+                    {{ ipForm.ip_id|as_crispy_field }}
+                  </div>
+                  <div class="col-6">
+                    {{ ipForm.ip_flags|as_crispy_field }}
+                  </div>
+              </div>
+
+              <div class="row m-2">
+                  <div class="col-12">
+                    {{ ipForm.content|as_crispy_field }}
+                  </div>
+              </div>
+
+              <div class="row m-2">
+                  <div class="col-12 send">
+                      <button class="btn btn-warning" type="submit">Send</button>
+                  </div>
+              </div>
           </form>
         </div>
     </section>
