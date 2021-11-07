@@ -1,3 +1,4 @@
+{% load crispy_forms_tags %}
 {% load static %}
 
 <!DOCTYPE html>
@@ -56,6 +57,13 @@
               Create your own IP's and send then to a random IP!
           </p>
 
+          <form action="{% url 'index' %}" method="post">
+              {% csrf_token %}
+
+              {{ ipForm | crispy }}
+
+              <button  class="btn btn-primary" type="submit">Send</button>
+          </form>
         </div>
     </section>
 
