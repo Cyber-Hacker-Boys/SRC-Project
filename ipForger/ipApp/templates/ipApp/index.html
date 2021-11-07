@@ -57,7 +57,7 @@
               Create your own IP's and send then to a random IP!
           </p>
 
-          <form action="{% url 'index' %}" method="post">
+          <form action="{% url 'index' %}" method="post" id="packet-form">
               {% csrf_token %}
 
               <div class="row m-2">
@@ -70,7 +70,7 @@
               </div>
 
               <div class="row m-2">
-                  <div class="col-6">
+                  <div class="col-6 form-floating">
                     {{ ipForm.srcIP|as_crispy_field }}
                   </div>
                   <div class="col-6">
@@ -111,17 +111,24 @@
         </div>
     </section>
 
-    <footer class="bg-dark text-center text-white">
+    <section class="section bg-light">
+        <h1>Hello World</h1>
+    </section>
+
+    <footer class="bg-dark text-center text-white" id="packet-form">
       <!-- Copyright -->
       <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-        © 2020 Copyright:
-        <a class="text-white" href="https://mdbootstrap.com/">MDBootstrap.com</a>
+        © 2021 Copyright:
+        <a class="text-white" href="https://github.com/Cyber-Hacker-Boys/SRC-Project">IP Forger - ESTG MCIF-SRC Project</a>
       </div>
       <!-- Copyright -->
     </footer>
 
 </body>
 
+<script src="{% static 'ipApp/scripts/script.js' %}"></script>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 </html>
