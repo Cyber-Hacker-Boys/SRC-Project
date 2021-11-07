@@ -1,0 +1,13 @@
+@font-face {
+    font-family: "Hack";
+    src: url(../fonts/Hacked-KerX.ttf);
+}
+
+.logo {
+     font-family: 'Hack', sans-serif;
+    padding-left: 10px;
+}
+
+.section{
+    padding: 50px;
+}
