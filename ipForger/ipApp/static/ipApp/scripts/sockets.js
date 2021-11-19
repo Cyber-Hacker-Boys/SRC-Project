@@ -16,10 +16,10 @@ socket.onmessage = function (event) {
     console.log(data);
 
     let line = document.createElement("li");
-    line.classList.add("list-group-item");
+    line.classList.add("new");
     let node = document.createTextNode(data);
     line.appendChild(node);
 
     let list = document.getElementById("table");
-    list.appendChild(line);
+    list.insertBefore(line, list.firstChild)
 }
