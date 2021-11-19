@@ -5,3 +5,5 @@ document.getElementById('packet-form').onsubmit = function () {
       'success'
     )
 };
+
+document.addEventListener("touchstart", function(){}, true)
