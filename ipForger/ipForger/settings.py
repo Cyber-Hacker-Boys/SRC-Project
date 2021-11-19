@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'channels',
     'ipApp',
     'crispy_forms',
     'crispy_bootstrap5',
@@ -75,6 +76,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'ipForger.wsgi.application'
+ASGI_APPLICATION = 'ipForger.asgi.application'
 
 
 # Database
