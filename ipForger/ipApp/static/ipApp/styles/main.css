@@ -17,3 +17,13 @@
 .send {
     padding-top: 20px;
 }
+
+.tab_color {
+    color: #6c757d;
+}
+
+.nav-tabs .nav-item .nav-link.active .tab_color {
+    color: #212529; !important;
+    line-height: 1.5;
+    font-weight: 400;
+}
