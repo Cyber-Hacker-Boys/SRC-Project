@@ -62,17 +62,20 @@
 
             <ul class="nav nav-tabs" id="myTab" role="tablist">
                 <li class="nav-item" role="presentation">
-                    <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true"><span class="tab_color">TCP</span></button>
+                    <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#TCP" type="button" role="tab" aria-controls="home" aria-selected="true"><span class="tab_color">TCP</span></button>
                 </li>
                 <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false"><span class="tab_color">UDP</span></button>
+                    <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#UDP" type="button" role="tab" aria-controls="profile" aria-selected="false"><span class="tab_color">UDP</span></button>
                 </li>
                 <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact" type="button" role="tab" aria-controls="contact" aria-selected="false"><span class="tab_color">ICMP</span></button>
+                    <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#ICMP" type="button" role="tab" aria-controls="contact" aria-selected="false"><span class="tab_color">ICMP</span></button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#ICMPScan" type="button" role="tab" aria-controls="contact" aria-selected="false"><span class="tab_color">ICMP Scan</span></button>
                 </li>
             </ul>
-                <div class="tab-content" id="myTabContent">
-                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+            <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade show active" id="TCP" role="tabpanel" aria-labelledby="home-tab">
                     <form action="{% url 'index' %}" method="post" id="packet-form">
                       {% csrf_token %}
 
@@ -125,7 +128,8 @@
                       </div>
                   </form>
                 </div>
-                <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+
+                <div class="tab-pane fade" id="UDP" role="tabpanel" aria-labelledby="profile-tab">
                     <form action="{% url 'index' %}" method="post" id="packet-form">
                       {% csrf_token %}
 
@@ -178,7 +182,88 @@
                       </div>
                   </form>
                 </div>
-                <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+
+                <div class="tab-pane fade" id="ICMP" role="tabpanel" aria-labelledby="profile-tab">
+                    <form action="{% url 'index' %}" method="post" id="packet-form">
+                      {% csrf_token %}
+
+                      <div class="row m-2">
+                          <div class="col-6">
+                            {{ ipForm.destIP|as_crispy_field }}
+                          </div>
+                          <div class="col-6">
+                            {{ ipForm.destPort|as_crispy_field }}
+                          </div>
+                      </div>
+
+                      <div class="row m-2">
+                          <div class="col-6 form-floating">
+                            {{ ipForm.srcIP|as_crispy_field }}
+                          </div>
+                          <div class="col-6">
+                            {{ ipForm.srcPort|as_crispy_field }}
+                          </div>
+                      </div>
+
+                      <div class="row m-2">
+                          <div class="col-6">
+                            {{ ipForm.seqN|as_crispy_field }}
+                          </div>
+                          <div class="col-6">
+                            {{ ipForm.ackN|as_crispy_field }}
+                          </div>
+                      </div>
+
+                      <div class="row m-2">
+                          <div class="col-6">
+                            {{ ipForm.ip_id|as_crispy_field }}
+                          </div>
+                          <div class="col-6">
+                            {{ ipForm.ip_flags|as_crispy_field }}
+                          </div>
+                      </div>
+
+                      <div class="row m-2">
+                          <div class="col-12">
+                            {{ ipForm.content|as_crispy_field }}
+                          </div>
+                      </div>
+
+                      <div class="row m-2">
+                          <div class="col-12 send">
+                              <button class="btn btn-warning" type="submit">Send</button>
+                          </div>
+                      </div>
+                  </form>
+                </div>
+
+                <div class="tab-pane fade" id="ICMPScan" role="tabpanel" aria-labelledby="profile-tab">
+                    <form action="{% url 'index' %}" method="post" id="packet-form">
+                      {% csrf_token %}
+
+                      <div class="row m-2">
+                          <div class="col-6">
+                            {{ ipForm.destIP|as_crispy_field }}
+                          </div>
+                          <div class="col-6">
+                            {{ ipForm.destPort|as_crispy_field }}
+                          </div>
+                      </div>
+
+                      <div class="row m-2">
+                          <div class="col-12">
+                            <label for="exampleFormControlTextarea1">Example textarea</label>
+                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                          </div>
+                      </div>
+
+                      <div class="row m-2">
+                          <div class="col-12 send">
+                              <button class="btn btn-warning" type="submit">Send</button>
+                          </div>
+                      </div>
+                  </form>
+                </div>
 
                 </div>
             </div>
@@ -203,7 +288,6 @@
           </tbody>
         </table>
         </div>
-
     </section>
 
     <footer class="bg-dark text-center text-white" id="packet-form">
