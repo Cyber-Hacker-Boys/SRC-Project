@@ -1,0 +1,36 @@
+.packet {
+    padding: 20px;
+}
+
+.ehter {
+    background-color: azure;
+    border: 3px solid blue;
+}
+
+.ip {
+    background-color: wheat;
+    border: 3px solid lightcoral;
+}
+
+.icmp {
+    background-color: lightgoldenrodyellow;
+    border: 3px solid #c3c300;
+}
+
+.tcp {
+    background-color: lightgoldenrodyellow;
+    border: 3px solid greenyellow;
+}
+
+.udp{
+    background-color: lightgoldenrodyellow;
+    border: 3px solid red;
+}
+
+h2:hover{
+    text-decoration: underline;
+}
+
+.help {
+    cursor: pointer;
+}

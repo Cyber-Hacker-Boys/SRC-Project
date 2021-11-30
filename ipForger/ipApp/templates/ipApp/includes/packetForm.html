@@ -1,0 +1,90 @@
+<div class="packet ehter">
+    <h2 data-bs-toggle="modal" data-bs-target="#helpModal" onclick="helpUser('Ethernet Header', 0, 0, 0)" class="help">
+        Ethernet Header</h2>
+    <div class="row p-2">
+        <div class="col-md-5">
+            <label for="ethDes" class="form-label">Destination Address(Mac)</label>&nbsp;<i
+                class="fas fa-question-circle help" data-bs-toggle="modal" data-bs-target="#helpModal"
+                onclick="helpUser('Destination Address', 1, 1, 0)"></i>
+            <input type="text" class="form-control" id="ethDes">
+        </div>
+        <div class="col-md-5">
+            <label for="ethSrc" class="form-label">Source Address(Mac)</label>&nbsp;<i
+                class="fas fa-question-circle help" data-bs-toggle="modal" data-bs-target="#helpModal"
+                onclick="helpUser('Source Address', 2, 2, 0)"></i>
+            <input type="text" class="form-control" id="ethSrc">
+        </div>
+        <div class="col-md-2">
+            <label for="type" class="form-label">Type</label>&nbsp;<i class="fas fa-question-circle help"
+                                                                      data-bs-toggle="modal" data-bs-target="#helpModal"
+                                                                      onclick="helpUser('Type', 3, 3, 0)"></i>
+            <input type="text" class="form-control" id="type">
+        </div>
+    </div>
+</div>
+
+ <div class="packet ip">
+        <h2>IP Frame</h2>
+        <div class="row p-2">
+            <div class="col-md-1">
+                <label for="version" class="form-label">Version</label>
+                <input type="text" class="form-control" id="version">
+            </div>
+            <div class="col-md-1">
+                <label for="ihl" class="form-label">IHL</label>
+                <input type="text" class="form-control" id="ihl">
+            </div>
+            <div class="col-md-4">
+                <label for="tos" class="form-label">TOS</label>
+                <input type="text" class="form-control" id="tos">
+            </div>
+            <div class="col-md-6">
+                <label for="len" class="form-label">Total Lenght</label>
+                <input type="text" class="form-control" id="len">
+            </div>
+        </div>
+
+        <div class="row p-2">
+            <div class="col-md-6">
+                <label for="ident" class="form-label">Identification</label>
+                <input type="text" class="form-control" id="ident">
+            </div>
+            <div class="col-md-1">
+                <label for="flags" class="form-label">Flags</label>
+                <input type="text" class="form-control" id="flags">
+            </div>
+            <div class="col-md-5">
+                <label for="fragment" class="form-label">Fragment Offset</label>
+                <input type="text" class="form-control" id="fragment">
+            </div>
+        </div>
+
+        <div class="row p-2">
+            <div class="col-md-3">
+                <label for="ttl" class="form-label">TTL</label>
+                <input type="text" class="form-control" id="ttl">
+            </div>
+            <div class="col-md-3">
+                <label for="protocols" class="form-label">Protocol</label>
+                <input type="text" class="form-control" id="protocols">
+            </div>
+            <div class="col-md-6">
+                <label for="headerC" class="form-label">Header Checksum</label>
+                <input type="text" class="form-control" id="headerC">
+            </div>
+        </div>
+
+        <div class="row p-2">
+            <div class="col-md-12">
+                <label for="srcIP" class="form-label">Source Address(IP)</label>
+                <input type="text" class="form-control" id="srcIP">
+            </div>
+        </div>
+
+        <div class="row p-2">
+            <div class="col-md-12">
+                <label for="destIP" class="form-label">Destination Address(IP)</label>
+                <input type="text" class="form-control" id="destIP">
+            </div>
+        </div>
+    </div>
