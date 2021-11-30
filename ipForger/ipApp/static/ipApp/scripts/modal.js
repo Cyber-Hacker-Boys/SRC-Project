@@ -6,10 +6,10 @@ let explanationE = [
 ];
 
 let imageUrlE = [
-    "{% static 'ipApp/images/Ethernet.png' %}",
-    'images/destEther.png',
-    'img/srcEther.png',
-    'img/typeEther.png'
+    '../../static/ipApp/images/Ethernet.png',
+    '../../static/ipApp/images/destEther.png',
+    '../../static/ipApp/images/srcEther.png',
+    '../../static/ipApp/images/typeEther.png'
 ]
 
 function helpUser(title, text, url, packet) {
