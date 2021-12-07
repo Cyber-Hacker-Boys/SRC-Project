@@ -1,7 +1,7 @@
 from django.shortcuts import render
 
 from .forms import IPCreatorForm
-from .tcp import IPPacket
+from .tcp import Packet
 
 
 # Create your views here.
@@ -11,7 +11,7 @@ def index(request):
         ip_create_form = IPCreatorForm()
     else:
         ip_create_form = IPCreatorForm(request.POST)
-        ip_packet = IPPacket()
+        ip_packet = Packet()
 
         ip_packet.src_ip = ip_create_form['srcIP'].value()
         ip_packet.src_port = int(ip_create_form['srcPort'].value())

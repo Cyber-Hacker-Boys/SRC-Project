@@ -18,13 +18,13 @@
             <label for="type" class="form-label">Type</label>&nbsp;<i class="fas fa-question-circle help"
                                                                       data-bs-toggle="modal" data-bs-target="#helpModal"
                                                                       onclick="helpUser('Type', 3, 3, 0)"></i>
-            <input type="text" class="form-control" id="type">
+            <input type="text" class="form-control" id="type" placeholder="0x0800">
         </div>
     </div>
 </div>
 
  <div class="packet ip">
-        <h2>IP Frame</h2>
+        <h2 data-bs-toggle="modal" data-bs-target="#helpModal" onclick="helpUser('IPv4 Header', 0, 0, 1)" class="help">IPv4 Frame</h2>
         <div class="row p-2">
             <div class="col-md-1">
                 <label for="version" class="form-label">Version</label>
