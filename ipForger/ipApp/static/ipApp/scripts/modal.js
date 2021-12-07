@@ -23,8 +23,20 @@ let imageUrlE = [
 ]
 
 let imageUrlI = [
-    '../../static/ipApp/images/Ethernet.png',
-    ''
+    '../../static/ipApp/images/Packets-IPV4.png',
+    '../../static/ipApp/images/Packets-IPV4-1.png',
+    '../../static/ipApp/images/Packets-IPV4-2.png',
+    '../../static/ipApp/images/Packets-IPV4-3.png',
+    '../../static/ipApp/images/Packets-IPV4-4.png',
+    '../../static/ipApp/images/Packets-IPV4-5.png',
+    '../../static/ipApp/images/Packets-IPV4-6.png',
+    '../../static/ipApp/images/Packets-IPV4-7.png',
+    '../../static/ipApp/images/Packets-IPV4-8.png',
+    '../../static/ipApp/images/Packets-IPV4-9.png',
+    '../../static/ipApp/images/Packets-IPV4-10.png',
+    '../../static/ipApp/images/Packets-IPV4-11.png',
+    '../../static/ipApp/images/Packets-IPV4-12.png',
+    '../../static/ipApp/images/Packets-IPV4-13.png'
 ]
 
 function helpUser(title, text, url, packet) {
