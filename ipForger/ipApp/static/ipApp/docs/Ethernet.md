@@ -1,4 +1,4 @@
-#Packet Explanation
+#Header Explanation
 
 ##Ethernet Header
 The ethernet header is the last header added to the data in the physical TCP/IP layer.
@@ -21,9 +21,3 @@ If multiple protocols are running in the upper (network) layer of the destinatio
 The type field solves this issue. This field allows the sender computer to insert the information of the upper layer protocol. Through this information, the data link layer of the destination computer can easily determine the upper layer protocol to which it should hand over the received frame.
 
 Modern LAN implementations mostly use the IP protocol in the network layer. There are two variants of the IP protocol; IPv4 and IPv6. If the type field has value IP or ox800, the frame is carrying the data of the IPv4 protocol. If the type field has value IPv6 or 0x86dd, the frame is carrying the data of the IPv6 protocol.
-
-##IPv4 Header
-
-An IP header is bits of information attached to each data packet that is transported in the computer network. This information usually includes addressing and routing details which makes it possible to reassemble the packets and have the original data at the destination.
-
-The IPv4 header contains 13 fields. These fields are Version, Internet Header Length, Type of Service, Total Length, Identification, Flags, Fragment offset, Time-to-Live, Protocol, Header Checksum, Source address, Destination address, and Options. The following image shows how these fields are arranged in the IP header
