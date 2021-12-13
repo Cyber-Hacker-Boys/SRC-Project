@@ -84,65 +84,87 @@
                        {% include 'ipApp/includes/packetForm.html' %}
 
                         <div class="packet tcp" id="tcp">
-                            <h2>TCP Frame</h2>
+                            <h2 data-bs-toggle="modal" data-bs-target="#helpModal" class="help" onclick="helpUser('TCP Packet', 0, 0, 2)">TCP Frame</h2>
                             <div class="row p-2">
                                 <div class="col-md-6">
-                                    <label for="srcPort" class="form-label">Source Port</label>
+                                    <label for="srcPort" class="form-label">Source Port</label> <i
+                                        class="fas fa-question-circle help" data-bs-toggle="modal" data-bs-target="#helpModal"
+                                        onclick="helpUser('Source Port', 1, 1, 2)"></i>
                                     <input type="text" class="form-control" id="srcPort">
                                 </div>
                                 <div class="col-md-6">
-                                    <label for="destPort" class="form-label">Destination Port</label>
+                                    <label for="destPort" class="form-label">Destination Port</label> <i
+                                        class="fas fa-question-circle help" data-bs-toggle="modal" data-bs-target="#helpModal"
+                                        onclick="helpUser('Destination Port', 2, 2, 2)"></i>
                                     <input type="text" class="form-control" id="destPort">
                                 </div>
                             </div>
 
                             <div class="row p-2">
                                 <div class="col-md-12">
-                                    <label for="seqNum" class="form-label">Sequence Number</label>
+                                    <label for="seqNum" class="form-label">Sequence Number</label> <i
+                                        class="fas fa-question-circle help" data-bs-toggle="modal" data-bs-target="#helpModal"
+                                        onclick="helpUser('Sequence Number', 3, 3, 2)"></i>
                                     <input type="text" class="form-control" id="seqNum">
                                 </div>
                             </div>
 
                             <div class="row p-2">
                                 <div class="col-md-12">
-                                    <label for="ackNum" class="form-label">Acknowledgment Number</label>
+                                    <label for="ackNum" class="form-label">Acknowledgment Number</label> <i
+                                        class="fas fa-question-circle help" data-bs-toggle="modal" data-bs-target="#helpModal"
+                                        onclick="helpUser('Acknowledgment Number', 4, 4, 2)"></i>
                                     <input type="text" class="form-control" id="ackNum">
                                 </div>
                             </div>
 
                             <div class="row p-2">
                                 <div class="col-md-2">
-                                    <label for="dOff" class="form-label">Data Offset</label>
+                                    <label for="dOff" class="form-label">Data Offset</label> <i
+                                        class="fas fa-question-circle help" data-bs-toggle="modal" data-bs-target="#helpModal"
+                                        onclick="helpUser('Data Offset', 5, 5, 2)"></i>
                                     <input type="text" class="form-control" id="dOff">
                                 </div>
                                 <div class="col-md-2">
-                                    <label for="rBits" class="form-label">Reserved Bits</label>
+                                    <label for="rBits" class="form-label">Reserved Bits</label> <i
+                                        class="fas fa-question-circle help" data-bs-toggle="modal" data-bs-target="#helpModal"
+                                        onclick="helpUser('Reserved Bits', 6, 6, 2)"></i>
                                     <input type="text" class="form-control" id="rBits">
                                 </div>
                                 <div class="col-md-2">
-                                    <label for="cFlags" class="form-label">Control Flags</label>
+                                    <label for="cFlags" class="form-label">Control Flags</label> <i
+                                        class="fas fa-question-circle help" data-bs-toggle="modal" data-bs-target="#helpModal"
+                                        onclick="helpUser('Control Flags', 7, 7, 2)"></i>
                                     <input type="text" class="form-control" id="cFlags">
                                 </div>
                                 <div class="col-md-6">
-                                    <label for="winSize" class="form-label">Window Size</label>
+                                    <label for="winSize" class="form-label">Window Size</label> <i
+                                        class="fas fa-question-circle help" data-bs-toggle="modal" data-bs-target="#helpModal"
+                                        onclick="helpUser('Window Size', 8, 8, 2)"></i>
                                     <input type="text" class="form-control" id="winSize">
                                 </div>
                             </div>
 
                             <div class="row p-2">
                                 <div class="col-md-6">
-                                    <label for="checkS" class="form-label">Checksum</label>
+                                    <label for="checkS" class="form-label">Checksum</label> <i
+                                        class="fas fa-question-circle help" data-bs-toggle="modal" data-bs-target="#helpModal"
+                                        onclick="helpUser('Checksum', 9, 9, 2)"></i>
                                     <input type="text" class="form-control" id="checkST">
                                 </div>
                                 <div class="col-md-6">
-                                    <label for="uPont" class="form-label">Urgent Pointer</label>
+                                    <label for="uPont" class="form-label">Urgent Pointer</label> <i
+                                        class="fas fa-question-circle help" data-bs-toggle="modal" data-bs-target="#helpModal"
+                                        onclick="helpUser('Urgent Pointer', 10, 10, 2)"></i>
                                     <input type="text" class="form-control" id="uPont">
                                 </div>
                             </div>
 
                             <div class="row p-2">
                                 <div class="col-md-12">
-                                    <label for="dataT" class="form-label">Optional Data</label>
+                                    <label for="dataT" class="form-label">Optional Data</label> <i
+                                        class="fas fa-question-circle help" data-bs-toggle="modal" data-bs-target="#helpModal"
+                                        onclick="helpUser('Optional Data', 11, 11, 2)"></i>
                                     <input type="text" class="form-control" id="dataT">
                                 </div>
                             </div>
@@ -211,29 +233,29 @@
                       {% include 'ipApp/includes/packetForm.html' %}
 
                       <div class="packet icmp" id="icmp">
-        <h2>ICMP Frame</h2>
-        <div class="row p-2">
-            <div class="col-md-3">
-                <label for="typeI" class="form-label">Type</label>
-                <input type="text" class="form-control" id="typeI">
-            </div>
-            <div class="col-md-3">
-                <label for="code" class="form-label">Code</label>
-                <input type="text" class="form-control" id="code">
-            </div>
-            <div class="col-md-6">
-                <label for="checkS" class="form-label">Checksum</label>
-                <input type="text" class="form-control" id="checkS">
-            </div>
-        </div>
+                            <h2>ICMP Frame</h2>
+                            <div class="row p-2">
+                                <div class="col-md-3">
+                                    <label for="typeI" class="form-label">Type</label>
+                                    <input type="text" class="form-control" id="typeI">
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="code" class="form-label">Code</label>
+                                    <input type="text" class="form-control" id="code">
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="checkS" class="form-label">Checksum</label>
+                                    <input type="text" class="form-control" id="checkS">
+                                </div>
+                            </div>
 
-        <div class="row p-2">
-            <div class="col-md-12">
-                <label for="content" class="form-label">Content</label>
-                <input type="text" class="form-control" id="content">
-            </div>
-        </div>
-    </div>
+                            <div class="row p-2">
+                                <div class="col-md-12">
+                                    <label for="content" class="form-label">Content</label>
+                                    <input type="text" class="form-control" id="content">
+                                </div>
+                            </div>
+                        </div>
 
                         <div class="row m-2">
                             <div class="col-12 send">
