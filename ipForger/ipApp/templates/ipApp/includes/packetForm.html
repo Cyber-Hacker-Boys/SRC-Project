@@ -6,7 +6,7 @@
             <label for="ethDes" class="form-label">Destination Address(Mac)</label>&nbsp;<i
                 class="fas fa-question-circle help" data-bs-toggle="modal" data-bs-target="#helpModal"
                 onclick="helpUser('Destination Address', 1, 1, 0)"></i>
-            <input type="text" class="form-control" id="ethDes">
+            <input type="text" class="form-control" id="ethDes" value="ff:ff:ff:ff:ff:ff">
         </div>
         <div class="col-md-5">
             <label for="ethSrc" class="form-label">Source Address(Mac)</label>&nbsp;<i
@@ -18,7 +18,7 @@
             <label for="type" class="form-label">Type</label>&nbsp;<i class="fas fa-question-circle help"
                                                                       data-bs-toggle="modal" data-bs-target="#helpModal"
                                                                       onclick="helpUser('Type', 3, 3, 0)"></i>
-            <input type="text" class="form-control" id="type" placeholder="0x0800">
+            <input type="number" class="form-control" id="type" min="0" max="65535">
         </div>
     </div>
 </div>
@@ -27,7 +27,7 @@
         <h2 data-bs-toggle="modal" data-bs-target="#helpModal" onclick="helpUser('IPv4 Header', 0, 0, 1)" class="help">IPv4 Frame</h2>
         <div class="row p-2">
             <div class="col-md-1">
-                <label for="version" class="form-label">Version</label> <i class="fas fa-question-circle help"
+                <label for="version" class="form-label">Ver</label> <i class="fas fa-question-circle help"
                                                                       data-bs-toggle="modal" data-bs-target="#helpModal"
                                                                       onclick="helpUser('Version', 1, 1, 1)"></i>
                 <input type="text" class="form-control" id="version" value="4" disabled>
@@ -36,19 +36,19 @@
                 <label for="ihl" class="form-label">IHL</label> <i class="fas fa-question-circle help"
                                                                       data-bs-toggle="modal" data-bs-target="#helpModal"
                                                                       onclick="helpUser('IHL', 2, 2, 1)"></i>
-                <input type="text" class="form-control" id="ihl">
+                <input type="number" class="form-control" id="ihl" min="5" max="15">
             </div>
             <div class="col-md-4">
                 <label for="tos" class="form-label">TOS</label> <i class="fas fa-question-circle help"
                                                                       data-bs-toggle="modal" data-bs-target="#helpModal"
                                                                       onclick="helpUser('TOS', 3, 3, 1)"></i>
-                <input type="text" class="form-control" id="tos">
+                <input type="number" class="form-control" id="tos" min="0" max="7">
             </div>
             <div class="col-md-6">
                 <label for="len" class="form-label">Total Length</label> <i class="fas fa-question-circle help"
                                                                       data-bs-toggle="modal" data-bs-target="#helpModal"
                                                                       onclick="helpUser('Total Length', 4, 4, 1)"></i>
-                <input type="text" class="form-control" id="len">
+                <input type="number" class="form-control" id="len" min="0" max="65535">
             </div>
         </div>
 
@@ -57,19 +57,23 @@
                 <label for="ident" class="form-label">Identification</label> <i class="fas fa-question-circle help"
                                                                       data-bs-toggle="modal" data-bs-target="#helpModal"
                                                                       onclick="helpUser('Identification', 5, 5, 1)"></i>
-                <input type="text" class="form-control" id="ident">
+                <input type="number" class="form-control" id="ident" min="0" max="65535">
             </div>
             <div class="col-md-1">
                 <label for="flags" class="form-label">Flags</label> <i class="fas fa-question-circle help"
                                                                       data-bs-toggle="modal" data-bs-target="#helpModal"
                                                                       onclick="helpUser('Flags', 6, 6, 1)"></i>
-                <input type="text" class="form-control" id="flags">
+                <select id="flags" class="form-control">
+                    <option value="0">0</option>
+                    <option value="MF">MF</option>
+                    <option value="DF">DF</option>
+                </select>
             </div>
             <div class="col-md-5">
                 <label for="fragment" class="form-label">Fragment Offset</label> <i class="fas fa-question-circle help"
                                                                       data-bs-toggle="modal" data-bs-target="#helpModal"
                                                                       onclick="helpUser('Fragment Offset', 7, 7, 1)"></i>
-                <input type="text" class="form-control" id="fragment">
+                <input type="number" class="form-control" id="fragment" min="0" max="65535">
             </div>
         </div>
 
@@ -78,19 +82,24 @@
                 <label for="ttl" class="form-label">TTL</label> <i class="fas fa-question-circle help"
                                                                       data-bs-toggle="modal" data-bs-target="#helpModal"
                                                                       onclick="helpUser('TTL', 8, 8, 1)"></i>
-                <input type="text" class="form-control" id="ttl">
+                <input type="number" class="form-control" id="ttl" min="0" max="255">
             </div>
             <div class="col-md-3">
                 <label for="protocols" class="form-label">Protocol</label> <i class="fas fa-question-circle help"
                                                                       data-bs-toggle="modal" data-bs-target="#helpModal"
                                                                       onclick="helpUser('Protocol', 9, 9, 1)"></i>
-                <input type="text" class="form-control" id="protocols">
+                <select id="protocols" class="form-control">
+                    <option value="IP">IP</option>
+                    <option value="TCP">TCP</option>
+                    <option value="UDP">UDP</option>
+                    <option value="ICMP">ICMP</option>
+                </select>
             </div>
             <div class="col-md-6">
                 <label for="headerC" class="form-label">Header Checksum</label> <i class="fas fa-question-circle help"
                                                                       data-bs-toggle="modal" data-bs-target="#helpModal"
                                                                       onclick="helpUser('Header Checksum', 10, 10, 1)"></i>
-                <input type="text" class="form-control" id="headerC">
+                <input type="number" class="form-control" id="headerC" min="0" max="65535">
             </div>
         </div>
 
@@ -117,7 +126,7 @@
                 <label for="optIP" class="form-label">Options</label> <i class="fas fa-question-circle help"
                                                                       data-bs-toggle="modal" data-bs-target="#helpModal"
                                                                       onclick="helpUser('Source Address', 13, 13, 1)"></i>
-                <input type="text" class="form-control" id="optIP">
+                <textarea type="text" class="form-control" id="optIP"></textarea>
             </div>
         </div>
 
