@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from .clientInfo import ClientInfo
 
 from .forms import IPCreatorForm
 from .tcp import Packet
@@ -9,6 +10,8 @@ from .tcp import Packet
 def index(request):
     if request.method == 'GET':
         ip_create_form = IPCreatorForm()
+        clientData = ClientInfo()
+
     else:
         ip_create_form = IPCreatorForm(request.POST)
         ip_packet = Packet()
@@ -25,4 +28,4 @@ def index(request):
 
         ip_packet.sendTCP()
 
-    return render(request, 'ipApp/index.html', {'ipForm': ip_create_form})
+    return render(request, 'ipApp/index.html', {'ipForm': ip_create_form, 'client': clientData})
