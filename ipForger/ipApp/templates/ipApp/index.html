@@ -64,24 +64,31 @@
 
             <ul class="nav nav-tabs" id="myTab" role="tablist">
                 <li class="nav-item" role="presentation">
-                    <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#TCP" type="button" role="tab" aria-controls="home" aria-selected="true"><span class="tab_color">TCP</span></button>
+                    <button class="nav-link active" id="tcp-tab" data-bs-toggle="tab" data-bs-target="#TCP" type="button" role="tab" aria-controls="tcp" aria-selected="true"><span class="tab_color">TCP</span></button>
                 </li>
                 <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#UDP" type="button" role="tab" aria-controls="profile" aria-selected="false"><span class="tab_color">UDP</span></button>
+                    <button class="nav-link" id="udp-tab" data-bs-toggle="tab" data-bs-target="#UDP" type="button" role="tab" aria-controls="udp" aria-selected="false"><span class="tab_color">UDP</span></button>
                 </li>
                 <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#ICMP" type="button" role="tab" aria-controls="contact" aria-selected="false"><span class="tab_color">ICMP</span></button>
+                    <button class="nav-link" id="icmp-tab" data-bs-toggle="tab" data-bs-target="#ICMP" type="button" role="tab" aria-controls="icmp" aria-selected="false"><span class="tab_color">ICMP</span></button>
                 </li>
                 <li class="nav-item" role="presentation">
                     <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#ICMPScan" type="button" role="tab" aria-controls="contact" aria-selected="false"><span class="tab_color">ICMP Scan</span></button>
                 </li>
             </ul>
             <div class="tab-content" id="myTabContent">
-                <div class="tab-pane fade show active" id="TCP" role="tabpanel" aria-labelledby="home-tab">
+                <div class="tab-pane fade show active" id="TCP" role="tabpanel" aria-labelledby="tcp-tab">
                     <form action="{% url 'index' %}" method="post" id="packet-form">
                       {% csrf_token %}
 
                        {% include 'ipApp/includes/packetForm.html' %}
+                         <div class="col-md-3">
+                            <label for="protocolsT" class="form-label">Protocol</label> <i class="fas fa-question-circle help"
+                                                                                  data-bs-toggle="modal" data-bs-target="#helpModal"
+                                                                                  onclick="helpUser('Protocol', 9, 9, 1)"></i>
+                            <input type="number" class="form-control" id="protocolsT" value="6" disabled>
+                        </div>
+                        {% include 'ipApp/includes/packetForm2.html' %}
 
                         <div class="packet tcp" id="tcp">
                             <h2 data-bs-toggle="modal" data-bs-target="#helpModal" class="help" onclick="helpUser('TCP Packet', 0, 0, 2)">TCP Frame</h2>
@@ -179,11 +186,18 @@
                   </form>
                 </div>
 
-                <div class="tab-pane fade" id="UDP" role="tabpanel" aria-labelledby="profile-tab">
+                <div class="tab-pane fade" id="UDP" role="tabpanel" aria-labelledby="udp-tab">
                     <form action="{% url 'index' %}" method="post" id="packet-form">
                       {% csrf_token %}
 
                        {% include 'ipApp/includes/packetForm.html' %}
+                         <div class="col-md-3">
+                            <label for="protocolsU" class="form-label">Protocol</label> <i class="fas fa-question-circle help"
+                                                                                  data-bs-toggle="modal" data-bs-target="#helpModal"
+                                                                                  onclick="helpUser('Protocol', 9, 9, 1)"></i>
+                            <input type="number" class="form-control" id="protocolsU" value="1" disabled>
+                        </div>
+                        {% include 'ipApp/includes/packetForm2.html' %}
 
                         <div class="packet udp" id="udp">
                             <h2>UDP Frame</h2>
@@ -226,11 +240,18 @@
                   </form>
                 </div>
 
-                <div class="tab-pane fade" id="ICMP" role="tabpanel" aria-labelledby="profile-tab">
+                <div class="tab-pane fade" id="ICMP" role="tabpanel" aria-labelledby="icmp-tab">
                     <form action="{% url 'index' %}" method="post" id="packet-form">
                       {% csrf_token %}
 
-                      {% include 'ipApp/includes/packetForm.html' %}
+                     {% include 'ipApp/includes/packetForm.html' %}
+                         <div class="col-md-3">
+                            <label for="protocolsI" class="form-label">Protocol</label> <i class="fas fa-question-circle help"
+                                                                                  data-bs-toggle="modal" data-bs-target="#helpModal"
+                                                                                  onclick="helpUser('Protocol', 9, 9, 1)"></i>
+                            <input type="number" class="form-control" id="protocolsI" value="1" name="proto" disabled>
+                        </div>
+                        {% include 'ipApp/includes/packetForm2.html' %}
 
                       <div class="packet icmp" id="icmp">
                             <h2>ICMP Frame</h2>
