@@ -4,6 +4,10 @@ from .clientInfo import ClientInfo
 from .forms import IPCreatorForm
 from .tcp import Packet
 
+from scapy.all import *
+from scapy.layers.inet import TCP, IP
+from scapy.layers.l2 import Ether
+
 
 # Create your views here.
 
@@ -29,3 +33,53 @@ def index(request):
         ip_packet.sendTCP()
 
     return render(request, 'ipApp/index.html', {'ipForm': ip_create_form, 'client': clientData})
+
+
+def sendT(request):
+    if request.method == "POST":
+        dMac = request.POST['ethDesT']
+        eMac = "a0:78:17:92:fb:25" #fix
+        typeT = int(request.POST['typeT'])
+
+        version = 4 #fix
+        ihl = int(request.POST['ihlT'])
+        tos = int(request.POST['tosT'])
+        lenT = int(request.POST['lenT'])
+        ident = int(request.POST['identT'])
+        flags = request.POST['flagsT']
+
+        if flags == "0":
+            int(flags)
+
+        fragment = int(request.POST['fragmentT'])
+        ttl = int(request.POST['ttlT'])
+        protocol = 1 #fix
+        check = int(request.POST['headerCT'])
+        srcIP = "192.168.81.4" #fix
+        destIP = request.POST['destIPT']
+        opt = request.POST['optIPT']
+
+        srcPort = int(request.POST['srcPort'])
+        destPort = int(request.POST['destPort'])
+        seqNum = int(request.POST['seqNum'])
+        ackNum = int(request.POST['ackNum'])
+        dOff = int(request.POST['dOff'])
+        rBits = int(request.POST['rBits'])
+        cFlags = request.POST['cFlags']
+        winSize = int(request.POST['winSize'])
+        checkST = int(request.POST['checkST'])
+        uPont = int(request.POST['uPont'])
+        dataT = 0
+
+        eth = Ether(dst=dMac, src=eMac, type=typeT)
+
+        ip = IP(version=version, ihl=ihl, tos=tos, len=lenT, id=ident, flags=flags, frag=fragment, ttl=ttl,
+                proto=protocol,
+                chksum=check, src=srcIP, dst=destIP, options=opt)
+
+        tcp = TCP(sport=srcPort, dport=destPort, seq=seqNum, ack=ackNum, dataofs=dOff, reserved=rBits, flags=cFlags,
+                  window=winSize, chksum=checkST, urgptr=uPont, options=[('NOP', 0), ('EOL', 0)])
+
+        send(ip / tcp)
+
+        return render(request, 'ipApp/index.html')

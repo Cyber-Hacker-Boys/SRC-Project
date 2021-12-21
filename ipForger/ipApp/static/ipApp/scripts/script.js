@@ -7,3 +7,4 @@ document.getElementById('packet-form').onsubmit = function () {
 };
 
 document.addEventListener("touchstart", function(){}, true)
+

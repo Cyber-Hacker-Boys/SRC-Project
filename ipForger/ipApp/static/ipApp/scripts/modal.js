@@ -122,3 +122,10 @@ function helpUser(title, text, url, packet) {
     })
 }
 
+function addOption() {
+
+    let opt1 = document.getElementById("opt1").value;
+    let opt2 = document.getElementById("opt2").value;
+
+    document.getElementById("dataT").value += opt1+","+opt2+";";
+}
