@@ -329,7 +329,7 @@
                                     <label for="ethDesU" class="form-label">Destination Address(Mac)</label>&nbsp;<i
                                         class="fas fa-question-circle help" data-bs-toggle="modal" data-bs-target="#helpModal"
                                         onclick="helpUser('Destination Address', 1, 1, 0)"></i>
-                                    <input type="text" class="form-control" id="ethDesU" name="ethDesU" value="ff:ff:ff:ff:ff:ff">
+                                    <input type="text" class="form-control" id="ethDesU" name="ethDesU" value="ff:ff:ff:ff:ff:ff" disabled>
                                 </div>
                                 <div class="col-md-5">
                                     <label for="ethSrcU" class="form-label">Source Address(Mac)</label>&nbsp;<i
@@ -486,39 +486,153 @@
                 </div>
 
                 <div class="tab-pane fade" id="ICMP" role="tabpanel" aria-labelledby="icmp-tab">
-                    <form action="{% url 'index' %}" method="post" id="packet-form">
+                    <form action="/sendI" method="post" id="packet-form">
                       {% csrf_token %}
 
-                     {% include 'ipApp/includes/packetForm.html' %}
-                         <div class="col-md-3">
-                            <label for="protocolsI" class="form-label">Protocol</label> <i class="fas fa-question-circle help"
-                                                                                  data-bs-toggle="modal" data-bs-target="#helpModal"
-                                                                                  onclick="helpUser('Protocol', 9, 9, 1)"></i>
-                            <input type="number" class="form-control" id="protocolsI" value="1" name="proto" disabled>
+                     <div class="packet ehter">
+                            <h2 data-bs-toggle="modal" data-bs-target="#helpModal" onclick="helpUser('Ethernet Header', 0, 0, 0)" class="help">
+                                Ethernet Header</h2>
+                            <div class="row p-2">
+                                <div class="col-md-5">
+                                    <label for="ethDesI" class="form-label">Destination Address(Mac)</label>&nbsp;<i
+                                        class="fas fa-question-circle help" data-bs-toggle="modal" data-bs-target="#helpModal"
+                                        onclick="helpUser('Destination Address', 1, 1, 0)"></i>
+                                    <input type="text" class="form-control" id="ethDesI" name="ethDesI" value="ff:ff:ff:ff:ff:ff" disabled>
+                                </div>
+                                <div class="col-md-5">
+                                    <label for="ethSrcI" class="form-label">Source Address(Mac)</label>&nbsp;<i
+                                        class="fas fa-question-circle help" data-bs-toggle="modal" data-bs-target="#helpModal"
+                                        onclick="helpUser('Source Address', 2, 2, 0)"></i>
+                                    <input type="text" class="form-control" id="ethSrcI" name="ethSrcI" value="{{ client.local_mac }}" disabled>
+                                </div>
+                                <div class="col-md-2">
+                                    <label for="typeI" class="form-label">Type</label>&nbsp;<i class="fas fa-question-circle help"
+                                                                                              data-bs-toggle="modal" data-bs-target="#helpModal"
+                                                                                              onclick="helpUser('Type', 3, 3, 0)"></i>
+                                    <input type="text" class="form-control" id="typeU" name="typeI" value="0x0800" disabled>
+                                </div>
+                            </div>
                         </div>
-                        {% include 'ipApp/includes/packetForm2.html' %}
+
+                         <div class="packet ip">
+                                <h2 data-bs-toggle="modal" data-bs-target="#helpModal" onclick="helpUser('IPv4 Header', 0, 0, 1)" class="help">IPv4 Frame</h2>
+                                <div class="row p-2">
+                                    <div class="col-md-1">
+                                        <label for="vrI" class="form-label">Ver</label> <i class="fas fa-question-circle help"
+                                                                                              data-bs-toggle="modal" data-bs-target="#helpModal"
+                                                                                              onclick="helpUser('Version', 1, 1, 1)"></i>
+                                        <input type="number" class="form-control" id="vrI" name="vrI" value="4" disabled>
+                                    </div>
+                                    <div class="col-md-1">
+                                        <label for="ihlI" class="form-label">IHL</label> <i class="fas fa-question-circle help"
+                                                                                              data-bs-toggle="modal" data-bs-target="#helpModal"
+                                                                                              onclick="helpUser('IHL', 2, 2, 1)"></i>
+                                        <input type="number" class="form-control" id="ihlI" name="ihlI" min="5" max="15" value="5">
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="tosI" class="form-label">TOS</label> <i class="fas fa-question-circle help"
+                                                                                              data-bs-toggle="modal" data-bs-target="#helpModal"
+                                                                                              onclick="helpUser('TOS', 3, 3, 1)"></i>
+                                        <input type="number" class="form-control" id="tosI" name="tosI" min="0" max="7" value="5">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="lenII" class="form-label">Total Length</label> <i class="fas fa-question-circle help"
+                                                                                              data-bs-toggle="modal" data-bs-target="#helpModal"
+                                                                                              onclick="helpUser('Total Length', 4, 4, 1)"></i>
+                                        <input type="number" class="form-control" id="lenII" name="lenII" min="0" max="65535" value="284">
+                                    </div>
+                                </div>
+
+                                <div class="row p-2">
+                                    <div class="col-md-6">
+                                        <label for="identI" class="form-label">Identification</label> <i class="fas fa-question-circle help"
+                                                                                              data-bs-toggle="modal" data-bs-target="#helpModal"
+                                                                                              onclick="helpUser('Identification', 5, 5, 1)"></i>
+                                        <input type="number" class="form-control" id="identI" name="identI" min="0" max="65535" value="1">
+                                    </div>
+                                    <div class="col-md-1">
+                                        <label for="flagsI" class="form-label">Flags</label> <i class="fas fa-question-circle help"
+                                                                                              data-bs-toggle="modal" data-bs-target="#helpModal"
+                                                                                              onclick="helpUser('Flags', 6, 6, 1)"></i>
+                                        <select id="flagsI" class="form-control" name="flagsI">
+                                            <option value="0">0</option>
+                                            <option value="MF">MF</option>
+                                            <option value="DF">DF</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-5">
+                                        <label for="fragmentI" class="form-label">Fragment Offset</label> <i class="fas fa-question-circle help"
+                                                                                              data-bs-toggle="modal" data-bs-target="#helpModal"
+                                                                                              onclick="helpUser('Fragment Offset', 7, 7, 1)"></i>
+                                        <input type="number" class="form-control" id="fragmentI" name="fragmentI" min="0" max="65535" value="0">
+                                    </div>
+                                </div>
+
+                                <div class="row p-2">
+                                    <div class="col-md-3">
+                                        <label for="ttlI" class="form-label">TTL</label> <i class="fas fa-question-circle help"
+                                                                                              data-bs-toggle="modal" data-bs-target="#helpModal"
+                                                                                              onclick="helpUser('TTL', 8, 8, 1)"></i>
+                                        <input type="number" class="form-control" id="ttlI" name="ttlI" min="0" max="255" value="64">
+                                    </div>
+
+                             <div class="col-md-3">
+                                <label for="protocolsI" class="form-label">Protocol</label> <i class="fas fa-question-circle help"
+                                                                                      data-bs-toggle="modal" data-bs-target="#helpModal"
+                                                                                      onclick="helpUser('Protocol', 9, 9, 1)"></i>
+                                <input type="number" class="form-control" id="protocolsI" name="protocolsI" value="1" disabled>
+                            </div>
+                         <div class="col-md-6">
+                            <label for="headerCI" class="form-label">Header Checksum</label> <i class="fas fa-question-circle help"
+                                                                                  data-bs-toggle="modal" data-bs-target="#helpModal"
+                                                                                  onclick="helpUser('Header Checksum', 10, 10, 1)"></i>
+                            <input type="number" class="form-control" id="headerCI" name="headerCI" min="0" max="65535" value="0">
+                        </div>
+                    </div>
+
+                    <div class="row p-2">
+                        <div class="col-md-12">
+                            <label for="srcIPI" class="form-label">Source Address(IP)</label> <i class="fas fa-question-circle help"
+                                                                                  data-bs-toggle="modal" data-bs-target="#helpModal"
+                                                                                  onclick="helpUser('Source Address', 11, 11, 1)"></i>
+                            <input type="text" class="form-control" id="srcIPI" name="srcIPI" value="{{ client.local_ip }}" disabled>
+                        </div>
+                    </div>
+
+                    <div class="row p-2">
+                        <div class="col-md-12">
+                            <label for="destIPI" class="form-label">Destination Address(IP)</label> <i class="fas fa-question-circle help"
+                                                                                  data-bs-toggle="modal" data-bs-target="#helpModal"
+                                                                                  onclick="helpUser('Source Address', 12, 12, 1)"></i>
+                            <input type="text" class="form-control" id="destIPI" name="destIPI" value="192.168.1.2">
+                        </div>
+                    </div>
+
+                    <div class="row p-2">
+                        <div class="col-md-12">
+                            <label for="optIPI" class="form-label">Options</label> <i class="fas fa-question-circle help"
+                                                                                  data-bs-toggle="modal" data-bs-target="#helpModal"
+                                                                                  onclick="helpUser('Source Address', 13, 13, 1)"></i>
+                            <textarea type="text" class="form-control" id="optIPI" name="optIPI" data-bs-toggle="modal" data-bs-target="#optionsTModal" disabled></textarea>
+                        </div>
+                    </div>
+
+                </div>
 
                       <div class="packet icmp" id="icmp">
                             <h2>ICMP Frame</h2>
                             <div class="row p-2">
                                 <div class="col-md-3">
                                     <label for="typeI" class="form-label">Type</label>
-                                    <input type="text" class="form-control" id="typeI">
+                                    <input type="number" class="form-control" id="typeI" name="typeI" value="8" min="0" max="255">
                                 </div>
                                 <div class="col-md-3">
                                     <label for="code" class="form-label">Code</label>
-                                    <input type="text" class="form-control" id="code">
+                                    <input type="number" class="form-control" id="code" name="codeI" value="0" min="0" max="255">
                                 </div>
                                 <div class="col-md-6">
                                     <label for="checkS" class="form-label">Checksum</label>
-                                    <input type="text" class="form-control" id="checkS">
-                                </div>
-                            </div>
-
-                            <div class="row p-2">
-                                <div class="col-md-12">
-                                    <label for="content" class="form-label">Content</label>
-                                    <input type="text" class="form-control" id="content">
+                                    <input type="number" class="form-control" id="checkS" name="checkS" value="123" min="0" max="65535">
                                 </div>
                             </div>
                         </div>

@@ -6,7 +6,7 @@ from .forms import IPCreatorForm
 from .tcp import Packet
 
 from scapy.all import *
-from scapy.layers.inet import TCP, IP, UDP
+from scapy.layers.inet import TCP, IP, UDP, ICMP
 from scapy.layers.l2 import Ether
 
 
@@ -39,10 +39,6 @@ def index(request):
 def sendT(request):
     if request.method == "POST":
 
-        dMac = request.POST['ethDesT']
-        eMac = request.POST['ethSrcT']
-        typeT = 0x800
-
         version = 4
         ihl = int(request.POST['ihlT'])
         tos = int(request.POST['tosT'])
@@ -72,8 +68,6 @@ def sendT(request):
         checkST = int(request.POST['checkST'])
         uPont = int(request.POST['uPont'])
         dataT = request.POST['dataT']
-
-        eth = Ether(dst=dMac, src=eMac, type=typeT)
 
         ip = IP(version=version, ihl=ihl, tos=tos, len=lenT, id=ident, flags=flags, frag=fragment, ttl=ttl,
                 proto=protocol,
@@ -127,6 +121,43 @@ def sendU(request):
         udp = UDP(sport=srcPort, dport=destPort, len=lenU, chksum=checkSU)
 
         send(ip / udp)
+
+        next = request.POST.get('next', '/')
+        return HttpResponseRedirect(next)
+
+
+def sendI(request):
+    if request.method == "POST":
+
+        version = 4
+        ihl = int(request.POST['ihlI'])
+        tos = int(request.POST['tosI'])
+        lenI = int(request.POST['lenII'])
+        ident = int(request.POST['identI'])
+        flags = request.POST['flagsI']
+
+        if flags == '0':
+            flags = 0
+
+        fragment = int(request.POST['fragmentI'])
+        ttl = int(request.POST['ttlI'])
+        protocol = int(request.POST['protocolsI'])
+        check = int(request.POST['headerCI'])
+        srcIP = request.POST['srcIPI']
+        destIP = request.POST['destIPI']
+        opt = request.POST['optIPI']
+
+        typeI = int(request.POST['typeI'])
+        codeI = int(request.POST['codeI'])
+        checkI = int(request.POST['checkS'])
+
+        ip = IP(version=version, ihl=ihl, tos=tos, len=lenI, id=ident, flags=flags, frag=fragment, ttl=ttl,
+                proto=protocol,
+                chksum=check, src=srcIP, dst=destIP, options=opt)
+
+        icmp = ICMP(type=typeI, code=codeI, chksum=checkI)
+
+        send(ip / icmp)
 
         next = request.POST.get('next', '/')
         return HttpResponseRedirect(next)
