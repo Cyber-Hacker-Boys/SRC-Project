@@ -101,7 +101,7 @@
                                     <label for="typeT" class="form-label">Type</label>&nbsp;<i class="fas fa-question-circle help"
                                                                                               data-bs-toggle="modal" data-bs-target="#helpModal"
                                                                                               onclick="helpUser('Type', 3, 3, 0)"></i>
-                                    <input type="number" class="form-control" id="typeT" name="typeT" min="0" max="65535" value="20">
+                                    <input type="text" class="form-control" id="typeT" name="typeT" value="0x0800" disabled>
                                 </div>
                             </div>
                         </div>
@@ -205,7 +205,7 @@
                             <label for="optIPT" class="form-label">Options</label> <i class="fas fa-question-circle help"
                                                                                   data-bs-toggle="modal" data-bs-target="#helpModal"
                                                                                   onclick="helpUser('Source Address', 13, 13, 1)"></i>
-                            <textarea type="text" class="form-control" id="optIPT" name="optIPT"></textarea>
+                            <textarea type="text" class="form-control" id="optIPT" name="optIPT" data-bs-toggle="modal" data-bs-target="#optionsTModal" disabled></textarea>
                         </div>
                     </div>
 
@@ -418,31 +418,9 @@
                 </div>
 
                 <div class="tab-pane fade" id="ICMPScan" role="tabpanel" aria-labelledby="profile-tab">
-                     <form action="{% url 'index' %}" method="post" id="packet-form">
-                      {% csrf_token %}
-
-                      <div class="row m-2">
-                          <div class="col-6">
-                            {{ ipForm.destIP|as_crispy_field }}
-                          </div>
-                          <div class="col-6">
-                            {{ ipForm.destPort|as_crispy_field }}
-                          </div>
-                      </div>
-
-                      <div class="row m-2">
-                          <div class="col-12">
-                            <label for="exampleFormControlTextarea1">Example textarea</label>
-                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                          </div>
-                      </div>
-
-                      <div class="row m-2">
-                          <div class="col-12 send">
-                              <button class="btn btn-warning" type="submit">Send</button>
-                          </div>
-                      </div>
-                  </form>
+                    <!--
+                    Form is in BACKUP FILE
+                     -->
                 </div>
 
                 </div>
@@ -537,6 +515,32 @@
               <div class="row">
                    <div class="col-12 send">
                        <button class="btn btn-success" onclick="addOption()">Add Option</button>
+                   </div>
+               </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="optionsTModal" tabindex="-1" aria-labelledby="optionTModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Add IP Options</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form>
+                <div class="row">
+                    <div class="col-md-12">
+                        <input type="text" class="form-control" id="optI">
+                    </div>
+                </div>
+
+            </form>
+              <div class="row">
+                   <div class="col-12 send">
+                       <button class="btn btn-danger" onclick="addOptionI()">Add Option</button>
                    </div>
                </div>
           </div>

@@ -1,6 +1,7 @@
 from django.shortcuts import render
-from .clientInfo import ClientInfo
+from django.http import HttpResponseRedirect
 
+from .clientInfo import ClientInfo
 from .forms import IPCreatorForm
 from .tcp import Packet
 
@@ -37,25 +38,26 @@ def index(request):
 
 def sendT(request):
     if request.method == "POST":
-        dMac = request.POST['ethDesT']
-        eMac = "a0:78:17:92:fb:25" #fix
-        typeT = int(request.POST['typeT'])
 
-        version = 4 #fix
+        dMac = request.POST['ethDesT']
+        eMac = request.POST['ethSrcT']
+        typeT = 0x800
+
+        version = 4
         ihl = int(request.POST['ihlT'])
         tos = int(request.POST['tosT'])
         lenT = int(request.POST['lenT'])
         ident = int(request.POST['identT'])
         flags = request.POST['flagsT']
 
-        if flags == "0":
-            int(flags)
+        if flags == '0':
+            flags = 0
 
         fragment = int(request.POST['fragmentT'])
         ttl = int(request.POST['ttlT'])
-        protocol = 1 #fix
+        protocol = int(request.POST['protocolsT'])
         check = int(request.POST['headerCT'])
-        srcIP = "192.168.81.4" #fix
+        srcIP = request.POST['srcIPT']
         destIP = request.POST['destIPT']
         opt = request.POST['optIPT']
 
@@ -69,7 +71,7 @@ def sendT(request):
         winSize = int(request.POST['winSize'])
         checkST = int(request.POST['checkST'])
         uPont = int(request.POST['uPont'])
-        dataT = 0
+        dataT = request.POST['dataT']
 
         eth = Ether(dst=dMac, src=eMac, type=typeT)
 
@@ -80,6 +82,7 @@ def sendT(request):
         tcp = TCP(sport=srcPort, dport=destPort, seq=seqNum, ack=ackNum, dataofs=dOff, reserved=rBits, flags=cFlags,
                   window=winSize, chksum=checkST, urgptr=uPont, options=[('NOP', 0), ('EOL', 0)])
 
-        send(ip / tcp)
+        sendp(eth / ip / tcp)
 
-        return render(request, 'ipApp/index.html')
+        next = request.POST.get('next', '/')
+        return HttpResponseRedirect(next)

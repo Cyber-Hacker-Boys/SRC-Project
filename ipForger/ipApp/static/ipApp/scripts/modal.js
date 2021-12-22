@@ -129,3 +129,13 @@ function addOption() {
 
     document.getElementById("dataT").value += opt1+","+opt2+";";
 }
+
+function addOptionI() {
+    let opt = document.getElementById("optI").value;
+
+    document.getElementById("optIPT").value += "["+opt+"],";
+}
+
+$('form').submit(function(){
+    $("form :disabled").removeAttr('disabled');
+});
