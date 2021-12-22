@@ -6,7 +6,7 @@ from .forms import IPCreatorForm
 from .tcp import Packet
 
 from scapy.all import *
-from scapy.layers.inet import TCP, IP
+from scapy.layers.inet import TCP, IP, UDP
 from scapy.layers.l2 import Ether
 
 
@@ -83,6 +83,50 @@ def sendT(request):
                   window=winSize, chksum=checkST, urgptr=uPont, options=[('NOP', 0), ('EOL', 0)])
 
         sendp(eth / ip / tcp)
+
+        next = request.POST.get('next', '/')
+        return HttpResponseRedirect(next)
+
+
+def sendU(request):
+    if request.method == "POST":
+
+        dMac = request.POST['ethDesU']
+        eMac = request.POST['ethSrcU']
+        typeT = 0x800
+
+        version = 4
+        ihl = int(request.POST['ihlU'])
+        tos = int(request.POST['tosU'])
+        lenI = int(request.POST['lenUI'])
+        ident = int(request.POST['identU'])
+        flags = request.POST['flagsU']
+
+        if flags == '0':
+            flags = 0
+
+        fragment = int(request.POST['fragmentU'])
+        ttl = int(request.POST['ttlU'])
+        protocol = int(request.POST['protocolsU'])
+        check = int(request.POST['headerCU'])
+        srcIP = request.POST['srcIPU']
+        destIP = request.POST['destIPU']
+        opt = request.POST['optIPU']
+
+        srcPort = int(request.POST['srcPortU'])
+        destPort = int(request.POST['destPortU'])
+        lenU = int(request.POST['lenU'])
+        checkSU = int(request.POST['checkSU'])
+
+        eth = Ether(dst=dMac, src=eMac, type=typeT)
+
+        ip = IP(version=version, ihl=ihl, tos=tos, len=lenI, id=ident, flags=flags, frag=fragment, ttl=ttl,
+                proto=protocol,
+                chksum=check, src=srcIP, dst=destIP, options=opt)
+
+        udp = UDP(sport=srcPort, dport=destPort, len=lenU, chksum=checkSU)
+
+        send(ip / udp)
 
         next = request.POST.get('next', '/')
         return HttpResponseRedirect(next)
