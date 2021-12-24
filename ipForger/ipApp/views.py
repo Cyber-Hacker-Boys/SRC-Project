@@ -69,6 +69,8 @@ def sendT(request):
         uPont = int(request.POST['uPont'])
         dataT = request.POST['dataT']
 
+        dataTT = request.POST['dataTC'];
+
         ip = IP(version=version, ihl=ihl, tos=tos, len=lenT, id=ident, flags=flags, frag=fragment, ttl=ttl,
                 proto=protocol,
                 chksum=check, src=srcIP, dst=destIP, options=opt)
@@ -76,7 +78,7 @@ def sendT(request):
         tcp = TCP(sport=srcPort, dport=destPort, seq=seqNum, ack=ackNum, dataofs=dOff, reserved=rBits, flags=cFlags,
                   window=winSize, chksum=checkST, urgptr=uPont, options=[('NOP', 0), ('EOL', 0)])
 
-        sendp(eth / ip / tcp)
+        send(ip / tcp / Raw(dataTT))
 
         next = request.POST.get('next', '/')
         return HttpResponseRedirect(next)
@@ -112,6 +114,8 @@ def sendU(request):
         lenU = int(request.POST['lenU'])
         checkSU = int(request.POST['checkSU'])
 
+        dataUD = request.POST['dataU']
+
         eth = Ether(dst=dMac, src=eMac, type=typeT)
 
         ip = IP(version=version, ihl=ihl, tos=tos, len=lenI, id=ident, flags=flags, frag=fragment, ttl=ttl,
@@ -120,7 +124,7 @@ def sendU(request):
 
         udp = UDP(sport=srcPort, dport=destPort, len=lenU, chksum=checkSU)
 
-        send(ip / udp)
+        send(ip / udp / Raw(dataUD))
 
         next = request.POST.get('next', '/')
         return HttpResponseRedirect(next)
@@ -151,13 +155,15 @@ def sendI(request):
         codeI = int(request.POST['codeI'])
         checkI = int(request.POST['checkS'])
 
+        dataIC = request.POST['dataAI']
+
         ip = IP(version=version, ihl=ihl, tos=tos, len=lenI, id=ident, flags=flags, frag=fragment, ttl=ttl,
                 proto=protocol,
                 chksum=check, src=srcIP, dst=destIP, options=opt)
 
         icmp = ICMP(type=typeI, code=codeI, chksum=checkI)
 
-        send(ip / icmp)
+        send(ip / icmp / Raw(dataIC))
 
         next = request.POST.get('next', '/')
         return HttpResponseRedirect(next)

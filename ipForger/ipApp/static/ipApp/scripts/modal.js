@@ -53,6 +53,25 @@ let explanationT = [
     '<b>Explanation:</b><br><br>Usages of optional TCP data include support for special acknowledgment and window scaling algorithms.',
 ];
 
+let explanationU = [
+    '<b>Explanation:</b><br><br>Transmission Control Protocol is transport layer protocol that is widely used with Internet Protocol. A protocol is a set of procedures and rules that two computers follow to understand each other and exchange data.<br><br>' +
+    'In overall TCP as the following features: <ul><li>Guarantees that data arrives as sent.</li> <li>Error-checks streams of data.</li> <li>A 20-byte header permits an optional 40 bytes of function data.</li> <li>Slower than UDP.</li> <li>Best for apps that require reliability.</li></ul>',
+    '<b>Explanation:</b><br><br>The source TCP port number represents the sending device.',
+    '<b>Explanation:</b><br><br>The destination TCP port number is the communication endpoint for the receiving device.',
+    '<b>Explanation:</b><br><br>Message senders use sequence numbers to mark the ordering of a group of messages.',
+    '<b>Explanation:</b><br><br>Message senders use sequence numbers to mark the ordering of a group of messages.'
+];
+
+let explanationIC = [
+    '<b>Explanation:</b><br><br>Transmission Control Protocol is transport layer protocol that is widely used with Internet Protocol. A protocol is a set of procedures and rules that two computers follow to understand each other and exchange data.<br><br>' +
+    'In overall TCP as the following features: <ul><li>Guarantees that data arrives as sent.</li> <li>Error-checks streams of data.</li> <li>A 20-byte header permits an optional 40 bytes of function data.</li> <li>Slower than UDP.</li> <li>Best for apps that require reliability.</li></ul>',
+    '<b>Explanation:</b><br><br>The source TCP port number represents the sending device.',
+    '<b>Explanation:</b><br><br>The destination TCP port number is the communication endpoint for the receiving device.',
+    '<b>Explanation:</b><br><br>Message senders use sequence numbers to mark the ordering of a group of messages.',
+    '<b>Explanation:</b><br><br>Message senders use sequence numbers to mark the ordering of a group of messages.'
+];
+
+
 let imageUrlE = [
     '../../static/ipApp/images/Ethernet/Ethernet.png',
     '../../static/ipApp/images/Ethernet/destEther.png',
@@ -92,6 +111,22 @@ let imageUrlT = [
        '../../static/ipApp/images/TCP/Packets-TCP-11.png'
 ];
 
+let imageUrlU = [
+       '../../static/ipApp/images/TCP/Packets-UDP.png',
+       '../../static/ipApp/images/TCP/Packets-UDP-1.png',
+       '../../static/ipApp/images/TCP/Packets-UDP-2.png',
+       '../../static/ipApp/images/TCP/Packets-UDP-3.png',
+       '../../static/ipApp/images/TCP/Packets-UDP-4.png'
+];
+
+let imageUrlIC = [
+       '../../static/ipApp/images/TCP/Packets-ICMP.png',
+       '../../static/ipApp/images/TCP/Packets-ICMP-1.png',
+       '../../static/ipApp/images/TCP/Packets-ICMP-2.png',
+       '../../static/ipApp/images/TCP/Packets-ICMP-3.png',
+       '../../static/ipApp/images/TCP/Packets-ICMP-4.png'
+];
+
 function helpUser(title, text, url, packet) {
     let myModalEl = document.getElementById('helpModal');
 
@@ -110,6 +145,14 @@ function helpUser(title, text, url, packet) {
             case 2:
                 document.getElementById('helpModalText').innerHTML = explanationT[text];
                 document.getElementById('helpModelImage').src = imageUrlT[url];
+                break;
+            case 3:
+                document.getElementById('helpModalText').innerHTML = explanationU[text];
+                document.getElementById('helpModelImage').src = imageUrlU[url];
+                break;
+            case 4:
+                document.getElementById('helpModalText').innerHTML = explanationIC[text];
+                document.getElementById('helpModelImage').src = imageUrlIC[url];
                 break;
             default:
                 break;

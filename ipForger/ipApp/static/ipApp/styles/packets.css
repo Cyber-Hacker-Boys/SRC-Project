@@ -22,6 +22,11 @@
     border: 3px solid greenyellow;
 }
 
+.data{
+    background-color: lightsalmon;
+    border: 3px solid darkorange;
+}
+
 .udp{
     background-color: lightgoldenrodyellow;
     border: 3px solid red;
