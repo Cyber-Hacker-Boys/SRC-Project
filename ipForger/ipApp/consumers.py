@@ -24,7 +24,7 @@ class WSConsumer(AsyncConsumer):
 
             await self.send({
                 'type': 'websocket.send',
-                'text': "1",
+                'text': "444",
             })
 
     async def websocket_receive(self, event):

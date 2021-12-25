@@ -28,7 +28,7 @@ socket.onmessage = function (event) {
     let line2 = document.createElement("td");
     let line3 = document.createElement("td");
     let node = document.createTextNode("1");
-    let node2 = document.createTextNode("1");
+    let node2 = document.createTextNode("55");
     let node3 = document.createTextNode("1");
     line1.appendChild(node);
     line2.appendChild(node2);

@@ -676,9 +676,34 @@
                 </div>
 
                 <div class="tab-pane fade" id="ICMPScan" role="tabpanel" aria-labelledby="profile-tab">
-                    <!--
-                    Form is in BACKUP FILE
-                     -->
+                    <form action="/ICMP_sweep" method="post" id="packet-form">
+                      {% csrf_token %}
+
+                      <div class="row m-2">
+                          <div class="col-6">
+                            <label for="ICMPScan" class="form-label">Start Address(IP)</label> <i class="fas help"></i>
+                            <input type="text" class="form-control" id="startIPScan" name="startIPScan">
+                          </div>
+
+                          <div class="col-6">
+                            <label for="ICMPScan" class="form-label">End Address(IP)</label> <i class="fas help"></i>
+                            <input type="text" class="form-control" id="endIPScan" name="endIPScan">
+                          </div>
+                      </div>
+
+                      <div class="row m-2">
+                          <div class="col-12">
+                            <label for="exampleFormControlTextarea1">Example textarea</label>
+                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                          </div>
+                      </div>
+
+                      <div class="row m-2">
+                          <div class="col-12 send">
+                              <button class="btn btn-warning" type="submit">Send</button>
+                          </div>
+                      </div>
+                  </form>
                 </div>
 
                 </div>
