@@ -21,7 +21,6 @@ def iprange(ip1,ip2):
                     iparr.append(temp)
     return iparr
 
-#Vars HERE
 iparray = iprange("192.168.1.178", "192.168.1.179")
 for x in iparray:
     print("->"+x)
