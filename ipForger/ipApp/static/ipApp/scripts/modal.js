@@ -30,9 +30,7 @@ let explanationI = [
     '<b>Explanation:</b><br>The size of this field is 16 bits. This field provides a checksum on the header only. Since the payload contains its own checksum, the payload is not included in the checksum calculation. Intermediate routers that receive and forward the packet calculate and verify the checksum and discard the packet if checksum verification fails. Since a router decrements the TTL value by 1 before forwarding the packet, the header checksum value is recomputed at each hop between the source and destination nodes.',
     '<b>Explanation:</b><br>The size of this field is 32 bits. This field stores the IPv4 address of the sending device.',
     '<b>Explanation:</b><br>The size of this field is also 32 bits. This field stores the IPv4 address of the destination device.',
-    '<b>Explanation:</b><br>This field stores IPv4 options. The size of this field is a multiple of 32 bits. If an option is not 32 bits in the length, it uses padding options in the remaining bits to make the header an integral number of 4-byte blocks.<br><br>' +
-    'That\'s all for this tutorial. In the next tutorial, we will discuss the IPv6 header in detail. If you like this tutorial, please share this tutorial with friends through your favorite social network.'
-];
+    '<b>Explanation:</b><br>This field stores IPv4 options. The size of this field is a multiple of 32 bits. If an option is not 32 bits in the length, it uses padding options in the remaining bits to make the header an integral number of 4-byte blocks.'];
 
 let explanationT = [
     '<b>Explanation:</b><br><br>Transmission Control Protocol is transport layer protocol that is widely used with Internet Protocol. A protocol is a set of procedures and rules that two computers follow to understand each other and exchange data.<br><br>' +
@@ -54,21 +52,22 @@ let explanationT = [
 ];
 
 let explanationU = [
-    '<b>Explanation:</b><br><br>Transmission Control Protocol is transport layer protocol that is widely used with Internet Protocol. A protocol is a set of procedures and rules that two computers follow to understand each other and exchange data.<br><br>' +
-    'In overall TCP as the following features: <ul><li>Guarantees that data arrives as sent.</li> <li>Error-checks streams of data.</li> <li>A 20-byte header permits an optional 40 bytes of function data.</li> <li>Slower than UDP.</li> <li>Best for apps that require reliability.</li></ul>',
-    '<b>Explanation:</b><br><br>The source TCP port number represents the sending device.',
-    '<b>Explanation:</b><br><br>The destination TCP port number is the communication endpoint for the receiving device.',
-    '<b>Explanation:</b><br><br>Message senders use sequence numbers to mark the ordering of a group of messages.',
-    '<b>Explanation:</b><br><br>Message senders use sequence numbers to mark the ordering of a group of messages.'
+    '<b>Explanation:</b><br><br>User datagram protocol (UDP) operates on top of the Internet Protocol (IP) to transmit datagrams over a network. UDP does not require the source and destination to establish a three-way handshake before transmission takes place. Additionally, there is no need for an end-to-end connection.<br><br>' +
+    'Since UDP avoids the overhead associated with connections, error checks and the retransmission of missing data, it’s suitable for real-time or high performance applications that don’t require data verification or correction. If verification is needed, it can be performed at the application layer.',
+    '<b>Explanation:</b><br><br>The port of the device sending the data. This field can be set to zero if the destination computer doesn’t need to reply to the sender.',
+    '<b>Explanation:</b><br><br>The destination UDP port number is the communication endpoint for the receiving device.',
+    '<b>Explanation:</b><br><br>Specifies the number of bytes comprising the UDP header and the UDP payload data. The limit for the UDP length field is determined by the underlying IP protocol used to transmit the data.',
+    '<b>Explanation:</b><br><br>The checksum allows the receiving device to verify the integrity of the packet header and payload. It is optional in IPv4 but was made mandatory in IPv6.'
 ];
 
 let explanationIC = [
-    '<b>Explanation:</b><br><br>Transmission Control Protocol is transport layer protocol that is widely used with Internet Protocol. A protocol is a set of procedures and rules that two computers follow to understand each other and exchange data.<br><br>' +
-    'In overall TCP as the following features: <ul><li>Guarantees that data arrives as sent.</li> <li>Error-checks streams of data.</li> <li>A 20-byte header permits an optional 40 bytes of function data.</li> <li>Slower than UDP.</li> <li>Best for apps that require reliability.</li></ul>',
-    '<b>Explanation:</b><br><br>The source TCP port number represents the sending device.',
-    '<b>Explanation:</b><br><br>The destination TCP port number is the communication endpoint for the receiving device.',
-    '<b>Explanation:</b><br><br>Message senders use sequence numbers to mark the ordering of a group of messages.',
-    '<b>Explanation:</b><br><br>Message senders use sequence numbers to mark the ordering of a group of messages.'
+    '<b>Explanation:</b><br><br>ICMP (Internet Control Message Protocol) is an error-reporting protocol that network devices such as routers use to generate error messages to the source IP address when network problems prevent delivery of IP packets. ICMP creates and sends messages to the source IP address indicating that a gateway to the internet, such as a router, service or host, cannot be reached for packet delivery. Any IP network device has the capability to send, receive or process ICMP messages.<br><br>' +
+    'ICMP is not a transport protocol that sends data between systems.<br><br>' +
+    'While ICMP is not used regularly in end-user applications, it is used by network administrators to troubleshoot internet connections in diagnostic utilities including ping and traceroute.',
+    '<b>Explanation:</b><br><br>The first 8 bits are the message types. Some common message types include the following:<ul><li>Type 0: Echo reply</li> <li>Type 3: Destination unreachable</li> <li>Type 5: Redirect</li> <li>Type 8: Echo</li></ul><br><br>' +
+    'The type provides a brief explanation of what the message is for so the receiving network device knows why it is getting the message and how to treat it.',
+    '<b>Explanation:</b><br><br>This field has 8 bits represent the message type code, which provides additional information about the error type.',
+    '<b>Explanation:</b><br><br>The last 16 bits provide a message integrity check. The checksum shows the number of bits in the entire message and enables the ICMP tool to check for consistency with the ICMP message header to make sure the full range of data was delivered.'
 ];
 
 
@@ -112,19 +111,19 @@ let imageUrlT = [
 ];
 
 let imageUrlU = [
-       '../../static/ipApp/images/TCP/Packets-UDP.png',
-       '../../static/ipApp/images/TCP/Packets-UDP-1.png',
-       '../../static/ipApp/images/TCP/Packets-UDP-2.png',
-       '../../static/ipApp/images/TCP/Packets-UDP-3.png',
-       '../../static/ipApp/images/TCP/Packets-UDP-4.png'
+       '../../static/ipApp/images/UDP/Packets-UDP.png',
+       '../../static/ipApp/images/UDP/Packets-UDP-1.png',
+       '../../static/ipApp/images/UDP/Packets-UDP-2.png',
+       '../../static/ipApp/images/UDP/Packets-UDP-3.png',
+       '../../static/ipApp/images/UDP/Packets-UDP-4.png'
 ];
 
 let imageUrlIC = [
-       '../../static/ipApp/images/TCP/Packets-ICMP.png',
-       '../../static/ipApp/images/TCP/Packets-ICMP-1.png',
-       '../../static/ipApp/images/TCP/Packets-ICMP-2.png',
-       '../../static/ipApp/images/TCP/Packets-ICMP-3.png',
-       '../../static/ipApp/images/TCP/Packets-ICMP-4.png'
+       '../../static/ipApp/images/ICMP/Packets-ICMP.png',
+       '../../static/ipApp/images/ICMP/Packets-ICMP-1.png',
+       '../../static/ipApp/images/ICMP/Packets-ICMP-2.png',
+       '../../static/ipApp/images/ICMP/Packets-ICMP-3.png',
+       '../../static/ipApp/images/ICMP/Packets-ICMP-4.png'
 ];
 
 function helpUser(title, text, url, packet) {

@@ -57,5 +57,3 @@ The size of this field is also 32 bits. This field stores the IPv4 address of th
 ###Options
 This field stores IPv4 options. The size of this field is a multiple of 32 bits. If an option is not 32 bits in the length, it uses padding options in the remaining bits to make the header an integral number of 4-byte blocks.
 
-That's all for this tutorial. In the next tutorial, we will discuss the IPv6 header in detail. If you like this tutorial, please share this tutorial with friends through your favorite social network.
-
