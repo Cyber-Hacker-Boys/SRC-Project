@@ -16,16 +16,10 @@ class WSConsumer(AsyncConsumer):
             "type": "websocket.accept"
         })
 
-        while self.connected:
-
-            await asyncio.sleep(2)
-
-            # obj =  # do_something (Ex: constantly query DB...)
-
-            await self.send({
-                'type': 'websocket.send',
-                'text': "444",
-            })
+        await self.send({
+            'type': 'websocket.send',
+            'text': "000",
+        })
 
     async def websocket_receive(self, event):
         print("receive", event)

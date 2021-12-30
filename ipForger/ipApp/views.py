@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponseRedirect, HttpResponse
 
 from .clientInfo import ClientInfo
+from .consumers import WSConsumer
 from .forms import IPCreatorForm
 from .tcp import Packet
 
@@ -11,6 +12,7 @@ from scapy.layers.l2 import Ether
 
 import ipaddress
 import threading
+import webbrowser
 from ipaddress import IPv4Network
 from scapy.all import *
 from .models import *
@@ -201,7 +203,6 @@ def ICMP_sweep(request):
         return render(request,'ipApp/index.html')
 
 #-----ICMPsweeper----
-
 def iprange(ip1,ip2):
     ip1_1 = ip1.split(".")
     ip2_2 = ip2.split(".")
@@ -239,6 +240,7 @@ def icmpSweep(startIPScan, endIPScan):
                     iparr.append(temp)
 
     live_count = 0
+    ress_Array = []
 
     # Send ICMP ping request, wait for answer
     for host in iparr:
@@ -247,16 +249,22 @@ def icmpSweep(startIPScan, endIPScan):
         #print(resp)
         if resp is None:
             print(f"{host} is down or not responding.")
+            ress_Array.append(host+" is down or not responding.")
         elif (
             int(resp.getlayer(ICMP).type)==3 and
             int(resp.getlayer(ICMP).code) in [1,2,3,9,10,13]
         ):
             print(f"{host} is blocking ICMP.")
+            ress_Array.append(host + " is blocking ICMP.")
         else:
             print(f"{host} is responding.")
+            ress_Array.append(host + " is responding.")
             live_count += 1
 
     print(f"{live_count}/{len(iparr)} hosts are online.")
 
+    ress_Array.append(str(live_count) +"/"+ str(len(iparr)) + "hosts are online.")
+
+    return ress_Array
 
 #-----ICMPsweeper----

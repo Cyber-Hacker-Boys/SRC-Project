@@ -12,7 +12,7 @@ socket.onclose = function(e){
     console.log("close", e)
 };
 socket.onmessage = function (event) {
-    var data = JSON.parse(event.data);
+    var data = event.data;
     console.log(data);
 /*
     let line = document.createElement("li");
