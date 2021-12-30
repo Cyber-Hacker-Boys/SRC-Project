@@ -190,8 +190,16 @@ $('form').submit(function(){
 function scan() {
     Swal.fire({
       title: 'Scan in progress!',
+        html:'<div id="basicUsage">00:00:00</div>',
       allowOutsideClick: false,
       didOpen: () => {
-        Swal.showLoading()}
+        Swal.showLoading();
+      var timer = new Timer();
+        timer.start();
+
+        timer.addEventListener('secondsUpdated', function (e) {
+            $('#basicUsage').html(timer.getTimeValues().toString());
+        });
+      }
     });
 }
