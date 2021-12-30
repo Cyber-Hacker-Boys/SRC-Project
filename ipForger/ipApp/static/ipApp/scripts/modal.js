@@ -187,3 +187,11 @@ $('form').submit(function(){
     $("form :disabled").removeAttr('disabled');
 });
 
+function scan() {
+    Swal.fire({
+      title: 'Scan in progress!',
+      allowOutsideClick: false,
+      didOpen: () => {
+        Swal.showLoading()}
+    });
+}

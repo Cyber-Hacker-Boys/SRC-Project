@@ -1,10 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponseRedirect, HttpResponse
 
 from .clientInfo import ClientInfo
 from .consumers import WSConsumer
 from .forms import IPCreatorForm
-from .tcp import Packet
 
 from scapy.all import *
 from scapy.layers.inet import TCP, IP, UDP, ICMP
@@ -17,6 +16,7 @@ from ipaddress import IPv4Network
 from scapy.all import *
 from .models import *
 from scapy.layers.inet import IP, ICMP
+
 
 # Create your views here.
 
@@ -190,39 +190,39 @@ def sendI(request):
         return HttpResponseRedirect(next)
 
 
-
 def ICMP_sweep(request):
     if request.method == "POST":
-
         startIPScan = request.POST['startIPScan']
         endIPScan = request.POST['endIPScan']
-        thr = threading.Thread(target=icmpSweep, args=(startIPScan, endIPScan), daemon=True)
-        thr.start()
-        #icmpSweep(startIPScan, endIPScan)
+        # thr = threading.Thread(target=icmpSweep, args=(startIPScan, endIPScan), daemon=True)
+        # thr.start()
+        scanData = icmpSweep(startIPScan, endIPScan)
 
-        return render(request,'ipApp/index.html')
+        return render(request, 'ipApp/report.html', {'scanD': scanData[:-1], 'result': scanData[-1]})
 
-#-----ICMPsweeper----
-def iprange(ip1,ip2):
+
+# -----ICMPsweeper----
+def iprange(ip1, ip2):
     ip1_1 = ip1.split(".")
     ip2_2 = ip2.split(".")
-    iparr=[]
+    iparr = []
     for i in range(0, len(ip1_1)):
         ip1_1[i] = int(ip1_1[i])
 
     for i in range(0, len(ip2_2)):
         ip2_2[i] = int(ip2_2[i])
 
-    for i in range(ip1_1[0], ip2_2[0]+1):
-        for j in range(ip1_1[1], ip2_2[1]+1):
-            for k in range(ip1_1[2], ip2_2[2]+1):
-                for z in range(ip1_1[3], ip2_2[3]+1):
-                    temp=str(i)+'.'+str(j)+'.'+str(k)+'.'+str(z)
+    for i in range(ip1_1[0], ip2_2[0] + 1):
+        for j in range(ip1_1[1], ip2_2[1] + 1):
+            for k in range(ip1_1[2], ip2_2[2] + 1):
+                for z in range(ip1_1[3], ip2_2[3] + 1):
+                    temp = str(i) + '.' + str(j) + '.' + str(k) + '.' + str(z)
                     iparr.append(temp)
     return iparr
 
+
 def icmpSweep(startIPScan, endIPScan):
-    #iparray = iprange("192.168.1.178", "192.168.1.179")
+    # iparray = iprange("192.168.1.178", "192.168.1.179")
     ip1_1 = startIPScan.split(".")
     ip2_2 = endIPScan.split(".")
     iparr = []
@@ -245,14 +245,14 @@ def icmpSweep(startIPScan, endIPScan):
     # Send ICMP ping request, wait for answer
     for host in iparr:
 
-        resp = sr1(IP(dst=str(host))/ICMP(),timeout=0.4,verbose=0)
-        #print(resp)
+        resp = sr1(IP(dst=str(host)) / ICMP(), timeout=0.4, verbose=0)
+        # print(resp)
         if resp is None:
             print(f"{host} is down or not responding.")
-            ress_Array.append(host+" is down or not responding.")
+            ress_Array.append(host + " is down or not responding.")
         elif (
-            int(resp.getlayer(ICMP).type)==3 and
-            int(resp.getlayer(ICMP).code) in [1,2,3,9,10,13]
+                int(resp.getlayer(ICMP).type) == 3 and
+                int(resp.getlayer(ICMP).code) in [1, 2, 3, 9, 10, 13]
         ):
             print(f"{host} is blocking ICMP.")
             ress_Array.append(host + " is blocking ICMP.")
@@ -263,8 +263,8 @@ def icmpSweep(startIPScan, endIPScan):
 
     print(f"{live_count}/{len(iparr)} hosts are online.")
 
-    ress_Array.append(str(live_count) +"/"+ str(len(iparr)) + "hosts are online.")
+    ress_Array.append(str(live_count) + "/" + str(len(iparr)) + "hosts are online.")
 
     return ress_Array
 
-#-----ICMPsweeper----
+# -----ICMPsweeper----
