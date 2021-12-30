@@ -304,6 +304,7 @@
                                         class="fas fa-question-circle help" data-bs-toggle="modal" data-bs-target="#helpModal"
                                         onclick="helpUser('Optional Data', 11, 11, 2)"></i>
                                     <textarea type="text" class="form-control" name="dataT" id="dataT" data-bs-toggle="modal" data-bs-target="#optionsModal" disabled></textarea>
+                                    <input type="hidden" id="optionsTCP" name="optionsTCP">
                                 </div>
                             </div>
 
@@ -787,26 +788,37 @@
           </div>
           <div class="modal-body">
             <form>
-                <div class="row">
+                <div class="form-check">
+                    <div class="form-switch">
+                         <div class="row">
                     <div class="col-md-6">
-                        <select id="opt1" name="opt1" class="form-control">
-                            <option value="EOL">EOL</option>
-                            <option value="NOP">NOP</option>
-                            <option value="MSS">MSS</option>
-                            <option value="WScale">WScale</option>
-                            <option value="SAckOK">SAckOK</option>
-                            <option value="SAck">SAck</option>
-                            <option value="Timestamp">Timestamp</option>
-                            <option value="AltChkSum">AltChkSum</option>
-                            <option value="AltChkSumOpt">AltChkSumOpt</option>
-                            <option value="Mood">Mood</option>
-                            <option value="Experiment">Experiment</option>
-                        </select>
+                        <label for="opt1-1" class="form-check-label">NOP</label>
                     </div>
-                    <div class="col-6">
-                        <input type="number" id="opt2" class="form-control">
+                    <div class="col-md-6">
+                        <input type="checkbox" name="NOP" id="opt1-1" class="form-check-input" value="1">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="opt1-2" class="form-check-label">MSS</label>
+                    </div>
+                    <div class="col-md-6">
+                        <input type="checkbox" name="MSS" id="opt1-2" class="form-check-input" value="2">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="opt1-3"  class="form-check-label">SAckOK</label>
+                    </div>
+                    <div class="col-md-6">
+                        <input type="checkbox" name="SAckOK" id="opt1-3" class="form-check-input" value="3">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="opt1-4" class="form-check-label">Timestamp</label>
+                    </div>
+                    <div class="col-md-6">
+                        <input type="checkbox"  name="Timestamp" id="opt1-4" class="form-check-input" value="4">
                     </div>
                 </div>
+                    </div>
+                </div>
+
 
             </form>
               <div class="row">

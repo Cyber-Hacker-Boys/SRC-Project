@@ -73,16 +73,29 @@ def sendT(request):
         winSize = int(request.POST['winSize'])
         checkST = int(request.POST['checkST'])
         uPont = int(request.POST['uPont'])
-        dataT = request.POST['dataT']
+        dataT = request.POST['optionsTCP']
 
-        dataTT = request.POST['dataTC'];
+        dataTT = request.POST['dataTC']
+
+        dataTS = dataT.split(",")
+        dataTS.pop()
+        dataO = []
+        for i in dataTS:
+            if i == "1":
+                dataO.append(('NOP', ''))
+            elif i == "2":
+                dataO.append(('MSS', 4))
+            elif i == "3":
+                dataO.append(('SAckOK', ''))
+            elif i == "4":
+                dataO.append(('Timestamp', (1098453, 0)))
 
         ip = IP(version=version, ihl=ihl, tos=tos, len=lenT, id=ident, flags=flags, frag=fragment, ttl=ttl,
                 proto=protocol,
                 chksum=check, src=srcIP, dst=destIP, options=opt)
 
         tcp = TCP(sport=srcPort, dport=destPort, seq=seqNum, ack=ackNum, dataofs=dOff, reserved=rBits, flags=cFlags,
-                  window=winSize, chksum=checkST, urgptr=uPont, options=[('NOP', 0), ('EOL', 0)])
+                  window=winSize, chksum=checkST, urgptr=uPont, options=dataO)
 
         send(ip / tcp / Raw(dataTT))
 

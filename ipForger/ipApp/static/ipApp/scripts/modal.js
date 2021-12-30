@@ -166,10 +166,15 @@ function helpUser(title, text, url, packet) {
 
 function addOption() {
 
-    let opt1 = document.getElementById("opt1").value;
-    let opt2 = document.getElementById("opt2").value;
+     document.getElementById("dataT").value = "";
 
-    document.getElementById("dataT").value += opt1+","+opt2+";";
+    for (let i = 1; i <= 4; i++) {
+        let opt = document.getElementById("opt1-"+i);
+        if (opt.checked){
+            document.getElementById("dataT").value += opt.name +",";
+            document.getElementById("optionsTCP").value += opt.value + ",";
+        }
+    }
 }
 
 function addOptionI() {
@@ -181,3 +186,4 @@ function addOptionI() {
 $('form').submit(function(){
     $("form :disabled").removeAttr('disabled');
 });
+
