@@ -663,3 +663,8 @@ body .cybr-btn + .cybr-btn {
     margin-right: auto;
     width: 50%;
 }
+
+.logo {
+    font-family: 'Hack', sans-serif;
+    font-size: 20px;
+}
