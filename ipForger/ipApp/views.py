@@ -171,6 +171,9 @@ def ICMP_sweep(request):
         scanData = icmpSweep(startIPScan, endIPScan)
 
         return render(request, 'ipApp/report.html', {'scanD': scanData[:-1], 'result': scanData[-1]})
+    else:
+        next = request.POST.get('next', '/')
+        return HttpResponseRedirect(next)
 
 
 # -----ICMPsweeper----

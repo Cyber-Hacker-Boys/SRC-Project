@@ -16,6 +16,7 @@
 
 .send {
     padding-top: 20px;
+    margin-bottom: 40px;
 }
 
 .tab_color {
@@ -26,4 +27,17 @@
     color: #212529; !important;
     line-height: 1.5;
     font-weight: 400;
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+footer {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    overflow: hidden;
 }
