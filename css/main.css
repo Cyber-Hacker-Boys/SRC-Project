@@ -656,3 +656,10 @@ body .cybr-btn + .cybr-btn {
 .cybr-btn:nth-of-type(2) {
     --primary-hue: 260;
 }
+
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
