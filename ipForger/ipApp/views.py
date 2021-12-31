@@ -1,47 +1,19 @@
-from django.shortcuts import render, redirect
-from django.http import HttpResponseRedirect, HttpResponse
-
-from .clientInfo import ClientInfo
-from .consumers import WSConsumer
-from .forms import IPCreatorForm
-
+from django.http import HttpResponseRedirect
+from django.shortcuts import render
 from scapy.all import *
-from scapy.layers.inet import TCP, IP, UDP, ICMP
+from scapy.layers.inet import IP, ICMP
+from scapy.layers.inet import TCP, UDP
 from scapy.layers.l2 import Ether
 
-import ipaddress
-import threading
-import webbrowser
-from ipaddress import IPv4Network
-from scapy.all import *
-from .models import *
-from scapy.layers.inet import IP, ICMP
+from .clientInfo import ClientInfo
 
 
 # Create your views here.
 
 def index(request):
     if request.method == 'GET':
-        ip_create_form = IPCreatorForm()
         clientData = ClientInfo()
-
-    else:
-        ip_create_form = IPCreatorForm(request.POST)
-        ip_packet = Packet()
-
-        ip_packet.src_ip = ip_create_form['srcIP'].value()
-        ip_packet.src_port = int(ip_create_form['srcPort'].value())
-        ip_packet.dst_ip = ip_create_form['destIP'].value()
-        ip_packet.dst_port = int(ip_create_form['destPort'].value())
-        ip_packet.seq_n = int(ip_create_form['seqN'].value())
-        ip_packet.ack_n = int(ip_create_form['ackN'].value())
-        ip_packet.ip_id = int(ip_create_form['ip_id'].value())
-        ip_packet.ip_flags = int(ip_create_form['ip_flags'].value())
-        ip_packet.content = ip_create_form['content'].value()
-
-        ip_packet.sendTCP()
-
-    return render(request, 'ipApp/index.html', {'ipForm': ip_create_form, 'client': clientData})
+        return render(request, 'ipApp/index.html', {'client': clientData})
 
 
 def sendT(request):

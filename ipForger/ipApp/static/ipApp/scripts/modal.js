@@ -70,6 +70,7 @@ let explanationIC = [
     '<b>Explanation:</b><br><br>The last 16 bits provide a message integrity check. The checksum shows the number of bits in the entire message and enables the ICMP tool to check for consistency with the ICMP message header to make sure the full range of data was delivered.'
 ];
 
+let scanExplanation = '<b>Explanation:</b><br><br>The Internet Control Message Protocol (ICMP) is like the TCP protocol; both support protocols in the internet protocol suite. ICMP is used for checking live systems; ping is the most well-known utility that uses ICMP requests. Its principle is very simple—ICMP scanning sends requests to hosts and waits for an echo request to check whether the system is alive.';
 
 let imageUrlE = [
     '../../static/ipApp/images/Ethernet/Ethernet.png',
@@ -126,6 +127,8 @@ let imageUrlIC = [
        '../../static/ipApp/images/ICMP/Packets-ICMP-4.png'
 ];
 
+let imageScan = '../../static/ipApp/images/icmpScan.png';
+
 function helpUser(title, text, url, packet) {
     let myModalEl = document.getElementById('helpModal');
 
@@ -152,6 +155,10 @@ function helpUser(title, text, url, packet) {
             case 4:
                 document.getElementById('helpModalText').innerHTML = explanationIC[text];
                 document.getElementById('helpModelImage').src = imageUrlIC[url];
+                break;
+            case 5:
+                document.getElementById('helpModalText').innerHTML = scanExplanation;
+                document.getElementById('helpModelImage').src = imageScan;
                 break;
             default:
                 break;
