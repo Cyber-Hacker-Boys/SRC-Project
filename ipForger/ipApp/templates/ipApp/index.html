@@ -8,7 +8,6 @@
     <title>IP Forger</title>
 
     <link rel="stylesheet" href="{% static 'ipApp/styles/main.css' %}">
-    <link rel="stylesheet" href="{% static 'ipApp/styles/table.css' %}">
     <link rel="stylesheet" href="{% static 'ipApp/styles/packets.css' %}">
 
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
@@ -72,7 +71,7 @@
                                     <label for="ethSrcT" class="form-label">Source Address(Mac)</label>&nbsp;<i
                                         class="fas fa-question-circle help" data-bs-toggle="modal" data-bs-target="#helpModal"
                                         onclick="helpUser('Source Address', 2, 2, 0)"></i>
-                                    <input type="text" class="form-control" id="ethSrcT" name="ethSrcT" value="{{ client.local_mac }}" disabled>
+                                    <input type="text" class="form-control" id="ethSrcT" name="ethSrcT" value="{{ clientMac }}" disabled>
                                 </div>
                                 <div class="col-md-2">
                                     <label for="typeT" class="form-label">Type</label>&nbsp;<i class="fas fa-question-circle help"
@@ -87,7 +86,7 @@
                                 <h2 data-bs-toggle="modal" data-bs-target="#helpModal" onclick="helpUser('IPv4 Header', 0, 0, 1)" class="help">IPv4 Frame</h2>
                                 <div class="row p-2">
                                     <div class="col-md-1">
-                                        <label for="vrT" class="form-label">Ver</label> <i class="fas fa-question-circle help"
+                                        <label for="vrT" class="form-label">Version</label> <i class="fas fa-question-circle help"
                                                                                               data-bs-toggle="modal" data-bs-target="#helpModal"
                                                                                               onclick="helpUser('Version', 1, 1, 1)"></i>
                                         <input type="number" class="form-control" id="vrT" name="vrT" value="4" disabled>
@@ -164,7 +163,7 @@
                             <label for="srcIPT" class="form-label">Source Address(IP)</label> <i class="fas fa-question-circle help"
                                                                                   data-bs-toggle="modal" data-bs-target="#helpModal"
                                                                                   onclick="helpUser('Source Address', 11, 11, 1)"></i>
-                            <input type="text" class="form-control" id="srcIPT" name="srcIPT" value="{{ client.local_ip }}" disabled>
+                            <input type="text" class="form-control" id="srcIPT" name="srcIPT" value="{{ clientIP }}" disabled>
                         </div>
                     </div>
 
@@ -323,7 +322,7 @@
                                     <label for="ethSrcU" class="form-label">Source Address(Mac)</label>&nbsp;<i
                                         class="fas fa-question-circle help" data-bs-toggle="modal" data-bs-target="#helpModal"
                                         onclick="helpUser('Source Address', 2, 2, 0)"></i>
-                                    <input type="text" class="form-control" id="ethSrcU" name="ethSrcU" value="{{ client.local_mac }}" disabled>
+                                    <input type="text" class="form-control" id="ethSrcU" name="ethSrcU" value="{{ clientMac }}" disabled>
                                 </div>
                                 <div class="col-md-2">
                                     <label for="typeU" class="form-label">Type</label>&nbsp;<i class="fas fa-question-circle help"
@@ -338,7 +337,7 @@
                                 <h2 data-bs-toggle="modal" data-bs-target="#helpModal" onclick="helpUser('IPv4 Header', 0, 0, 1)" class="help">IPv4 Frame</h2>
                                 <div class="row p-2">
                                     <div class="col-md-1">
-                                        <label for="vrU" class="form-label">Ver</label> <i class="fas fa-question-circle help"
+                                        <label for="vrU" class="form-label">Version</label> <i class="fas fa-question-circle help"
                                                                                               data-bs-toggle="modal" data-bs-target="#helpModal"
                                                                                               onclick="helpUser('Version', 1, 1, 1)"></i>
                                         <input type="number" class="form-control" id="vrU" name="vrU" value="4" disabled>
@@ -415,7 +414,7 @@
                             <label for="srcIPU" class="form-label">Source Address(IP)</label> <i class="fas fa-question-circle help"
                                                                                   data-bs-toggle="modal" data-bs-target="#helpModal"
                                                                                   onclick="helpUser('Source Address', 11, 11, 1)"></i>
-                            <input type="text" class="form-control" id="srcIPU" name="srcIPU" value="{{ client.local_ip }}" disabled>
+                            <input type="text" class="form-control" id="srcIPU" name="srcIPU" value="{{ clientIP }}" disabled>
                         </div>
                     </div>
 
@@ -509,7 +508,7 @@
                                     <label for="ethSrcI" class="form-label">Source Address(Mac)</label>&nbsp;<i
                                         class="fas fa-question-circle help" data-bs-toggle="modal" data-bs-target="#helpModal"
                                         onclick="helpUser('Source Address', 2, 2, 0)"></i>
-                                    <input type="text" class="form-control" id="ethSrcI" name="ethSrcI" value="{{ client.local_mac }}" disabled>
+                                    <input type="text" class="form-control" id="ethSrcI" name="ethSrcI" value="{{ clientMac }}" disabled>
                                 </div>
                                 <div class="col-md-2">
                                     <label for="typeI" class="form-label">Type</label>&nbsp;<i class="fas fa-question-circle help"
@@ -524,7 +523,7 @@
                                 <h2 data-bs-toggle="modal" data-bs-target="#helpModal" onclick="helpUser('IPv4 Header', 0, 0, 1)" class="help">IPv4 Frame</h2>
                                 <div class="row p-2">
                                     <div class="col-md-1">
-                                        <label for="vrI" class="form-label">Ver</label> <i class="fas fa-question-circle help"
+                                        <label for="vrI" class="form-label">Version</label> <i class="fas fa-question-circle help"
                                                                                               data-bs-toggle="modal" data-bs-target="#helpModal"
                                                                                               onclick="helpUser('Version', 1, 1, 1)"></i>
                                         <input type="number" class="form-control" id="vrI" name="vrI" value="4" disabled>
@@ -601,7 +600,7 @@
                             <label for="srcIPI" class="form-label">Source Address(IP)</label> <i class="fas fa-question-circle help"
                                                                                   data-bs-toggle="modal" data-bs-target="#helpModal"
                                                                                   onclick="helpUser('Source Address', 11, 11, 1)"></i>
-                            <input type="text" class="form-control" id="srcIPI" name="srcIPI" value="{{ client.local_ip }}" disabled>
+                            <input type="text" class="form-control" id="srcIPI" name="srcIPI" value="{{ clientIP }}" disabled>
                         </div>
                     </div>
 
@@ -738,12 +737,12 @@
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+            <h5 class="modal-title" id="exampleModalLabel">Add TCP Options</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
             <form>
-                <div class="form-check">
+                <div class="form-check" style="text-align: center">
                     <div class="form-switch">
                          <div class="row">
                     <div class="col-md-6">

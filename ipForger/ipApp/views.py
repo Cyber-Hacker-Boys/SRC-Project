@@ -5,15 +5,18 @@ from scapy.layers.inet import IP, ICMP
 from scapy.layers.inet import TCP, UDP
 from scapy.layers.l2 import Ether
 
-from .clientInfo import ClientInfo
+import socket
+from getmac import get_mac_address as gma
 
 
 # Create your views here.
 
 def index(request):
     if request.method == 'GET':
-        clientData = ClientInfo()
-        return render(request, 'ipApp/index.html', {'client': clientData})
+        hostname = socket.gethostname()
+        local_ip = socket.gethostbyname(hostname)
+        local_mac = gma()
+        return render(request, 'ipApp/index.html', {'clientIP': local_ip, 'clientMac': local_mac})
 
 
 def sendT(request):
