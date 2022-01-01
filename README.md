@@ -1,5 +1,5 @@
 # IP Forger
-##Forge your own packets
+## Forge your own packets
 
 ![IPForger](https://i.ibb.co/ZS3ZW7V/Captura-de-ecra-2022-01-01-a-s-10-04-31-removebg-preview.png)
 
@@ -13,13 +13,13 @@ This the repository of our Network Security project for our Master Degree in Ins
 IP forger is an web app made in python with the Django Framework, the goal of the app is to send customized network packets and
 scanning the network for active IP'S. The goal of the app is to be used on a local network and launched by the localhost.
 
-###What we will offer
+### What we will offer
 
 - Sending Packets in a GUI Like Form
 - Realizing ICMP Scans
 - Offering an educational form of learning how packets work
 
-###Technology
+### Technology
 
 The app is done using:
 
@@ -29,12 +29,12 @@ The app is done using:
 | Django     | 3.2          |
 |  Scapy     | 2.4          |
 
-###Requirements
+### Requirements
 
 - [Python 3.9]
 - [Pip]
 
-###Installation
+### Installation
 
 To download the project use the download on github or use the command line
 
@@ -58,7 +58,7 @@ $ python manage.py runserver
 
 The project should the open in your localhost.
 
-###License
+### License
 
 This code is open source and was based around documentation another references so the license is MIT.
 See the license file for more information.
