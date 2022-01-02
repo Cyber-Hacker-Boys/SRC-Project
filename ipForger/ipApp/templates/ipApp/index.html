@@ -239,17 +239,7 @@
                                     <label for="cFlags" class="form-label">Control Flags</label> <i
                                         class="fas fa-question-circle help" data-bs-toggle="modal" data-bs-target="#helpModal"
                                         onclick="helpUser('Control Flags', 7, 7, 2)"></i>
-                                    <select id="cFlags" name="cFlags" class="form-control">
-                                      <option value="N">NS</option>
-                                      <option value="C">CWR</option>
-                                      <option value="E">ECE</option>
-                                      <option value="U">URG</option>
-                                      <option value="A">ACK</option>
-                                      <option value="P">PSH</option>
-                                      <option value="R">RST</option>
-                                      <option value="S">SYN</option>
-                                      <option value="F">FIN</option>
-                                    </select>
+                                    <input type="text" class="form-control" id="cFlags" name="cFlags" data-bs-toggle="modal" data-bs-target="#flagModal" disabled>
                                 </div>
                                 <div class="col-md-6">
                                     <label for="winSize" class="form-label">Window Size</label> <i
@@ -778,6 +768,89 @@
               <div class="row">
                    <div class="col-12 send">
                        <button class="btn btn-success" onclick="addOption()">Add Option</button>
+                   </div>
+               </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+ <!-- Modal -->
+    <div class="modal fade" id="flagModal" tabindex="-1" aria-labelledby="flagModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Add TCP Flags</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form>
+                <div class="form-check" style="text-align: center">
+                    <div class="form-switch">
+                         <div class="row">
+                    <div class="col-md-6">
+                        <label for="flag1" class="form-check-label">NS</label>
+                    </div>
+                    <div class="col-md-6">
+                        <input type="checkbox" id="flag1" class="form-check-input" value="N">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="flag2" class="form-check-label">CWR</label>
+                    </div>
+                    <div class="col-md-6">
+                        <input type="checkbox" id="flag2" class="form-check-input" value="C">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="flag3"  class="form-check-label">ECE</label>
+                    </div>
+                    <div class="col-md-6">
+                        <input type="checkbox"  id="flag3" class="form-check-input" value="E">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="flag4" class="form-check-label">URG</label>
+                    </div>
+                    <div class="col-md-6">
+                        <input type="checkbox" id="flag4" class="form-check-input" value="U">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="flag5" class="form-check-label">ACK</label>
+                    </div>
+                    <div class="col-md-6">
+                        <input type="checkbox" id="flag5" class="form-check-input" value="A">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="flag6" class="form-check-label">PSH</label>
+                    </div>
+                    <div class="col-md-6">
+                        <input type="checkbox" id="flag6" class="form-check-input" value="P">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="flag7" class="form-check-label">RST</label>
+                    </div>
+                    <div class="col-md-6">
+                        <input type="checkbox" id="flag7" class="form-check-input" value="R">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="flag8" class="form-check-label">SYN</label>
+                    </div>
+                    <div class="col-md-6">
+                        <input type="checkbox" id="flag8" class="form-check-input" value="S">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="flag9" class="form-check-label">FIN</label>
+                    </div>
+                    <div class="col-md-6">
+                        <input type="checkbox" id="flag9" class="form-check-input" value="F">
+                    </div>
+                </div>
+                    </div>
+                </div>
+
+
+            </form>
+              <div class="row">
+                   <div class="col-12 send">
+                       <button class="btn btn-success" onclick="addFlag()">Add Flags</button>
                    </div>
                </div>
           </div>

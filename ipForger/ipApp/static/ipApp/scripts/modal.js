@@ -201,12 +201,29 @@ function addOption() {
             document.getElementById("optionsTCP").value += opt.value + ",";
         }
     }
+    $('#optionsModal').modal('toggle');
 }
+
+function addFlag() {
+
+     document.getElementById("cFlags").value = "";
+
+    for (let i = 1; i <= 9; i++) {
+        let opt = document.getElementById("flag"+i);
+        if (opt.checked){
+            document.getElementById("cFlags").value += opt.value;
+        }
+    }
+
+    $('#flagModal').modal('toggle');
+}
+
 
 function addOptionI() {
     let opt = document.getElementById("optI").value;
 
     document.getElementById("optIPT").value = "["+opt+"],";
+    $('#optionsTModal').modal('toggle');
 }
 
 $('form').submit(function(){
