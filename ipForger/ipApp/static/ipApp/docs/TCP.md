@@ -12,23 +12,36 @@ In overall TCP as the following features:
 ###Source Port
 The source TCP port number represents the sending device.
 
+This field accepts values from 0 to 65535.
+
 ###Destination Port
 The destination TCP port number is the communication endpoint for the receiving device.
+
+This field accepts values from 0 to 65535.
 
 ###Sequence Number
 Message senders use sequence numbers to mark the ordering of a group of messages.
 
+This field accepts values from 0 to 4294967295.
+
+
 ###Acknowledgment number
 Both senders and receivers use the acknowledgment numbers field to communicate the sequence numbers of messages that are either recently received or expected to be sent.
+
+This field accepts values from 0 to 4294967295.
 
 ###Data Offset
 The data offset field stores the total size of a TCP header in multiples of four bytes. A header not using the optional TCP field has a data offset of 5 (representing 20 bytes), while a header using the maximum-sized optional field has a data offset of 15 (representing 60 bytes).
 
+So the Data Offset can range from the value 5 to 15.
+
 ###Reserved Data
- Reserved data in TCP headers always has a value of zero. This field aligns the total header size as a multiple of four bytes, which is important for the efficiency of computer data processing.
+Reserved data in TCP headers always has a value of zero. This field aligns the total header size as a multiple of four bytes, which is important for the efficiency of computer data processing.
  
+This field is set to 0.
+
 ###Control Flags
-TCP uses a set of six standard and three extended control flags—each an individual bit representing On or Off—to manage data flow in specific situations.
+TCP uses a set of six standard and three extended control flags—each an individual bit representing On or Off to manage data flow in specific situations.
 
 ###Windows Size
 TCP senders use a number, called window size, to regulate how much data they send to a receiver before requiring an acknowledgment in return. 

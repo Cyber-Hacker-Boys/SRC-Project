@@ -9,7 +9,7 @@ This field is 6 bytes long. It contains the MAC address of the destination devic
 For convenience, usually, it is written as 12-digit hexadecimal numbers (such as 0000.0A12.1234).
 
 ###Source Address
-This field is also 6 bytes long. It contains the MAC address of the source device. It helps the receiving device in identifying the source device. The image above shows an example of both types of address in the frame.
+This field is also 6 bytes long. It contains the MAC address of the source device. It helps the receiving device in identifying the source device.
 
 ###Type
 This field is 2 bytes long. This field stores information about the protocol of the upper layer (network layer).
