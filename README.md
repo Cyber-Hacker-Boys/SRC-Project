@@ -58,6 +58,10 @@ $ python manage.py runserver
 
 The project should the open in your localhost.
 
+### WARNING:
+
+Scapy is known for having trouble running on Windows OS, that's why we recommend to use this app on a UNIX OS (Linux or Mac OS) to have the best  results.
+
 ### License
 
 This code is open source and was based around documentation another references so the license is MIT.
