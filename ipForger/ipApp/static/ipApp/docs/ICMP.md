@@ -16,8 +16,13 @@ The first 8 bits are the message types. Some common message types include the fo
 
 The type provides a brief explanation of what the message is for so the receiving network device knows why it is getting the message and how to treat it.
 
+This field accepts values from 0 to 255.
+
 ###Code
 This field has 8 bits represent the message type code, which provides additional information about the error type.
 
+This field accepts values from 0 to 255. 
 ###Checksum
 The last 16 bits provide a message integrity check. The checksum shows the number of bits in the entire message and enables the ICMP tool to check for consistency with the ICMP message header to make sure the full range of data was delivered.
+
+This field accepts values from 0 to 65535.

@@ -1,12 +1,15 @@
 let explanationE = [
     '<b>Explanation:</b><br><br>The ethernet header is the last header added to the data in the physical TCP/IP layer.',
-    '<b>Explanation:</b><br><br>This field is 6 bytes long. It contains the MAC address of the destination device. MAC address is 6 bytes or 48 bits (1 byte = 8 bits, 6x8 = 48bits) long. <br><br>For convenience, usually, it is written as 12-digit hexadecimal numbers (such as 0000.0A12.1234).',
-    '<b>Explanation:</b><br>This field is also 6 bytes long. It contains the MAC address of the source device. It helps the receiving device in identifying the source device.',
+    '<b>Explanation:</b><br><br>This field is 6 bytes long. It contains the MAC address of the destination device. MAC address is 6 bytes or 48 bits (1 byte = 8 bits, 6x8 = 48bits) long. <br><br>For convenience, usually, it is written as 12-digit hexadecimal numbers (such as 0000.0A12.1234).<br><br>' +
+    '<b>Form Restriction: This value is set to the broadcast mac address.</b>',
+    '<b>Explanation:</b><br>This field is also 6 bytes long. It contains the MAC address of the source device. It helps the receiving device in identifying the source device.<br><br>' +
+    '<b>Form Restriction: This value is set to the users mac address.</b>',
     '<b>Explanation:</b><br>This field is 2 bytes long. This field stores information about the protocol of the upper layer (network layer).<br><br>' +
     'The Data Link layer of the source computer prepares, packs and loads the Ethernet frame in the media. The Data link layer of the destination computer picks the Ethernet frame from the media. After picking the Ethernet frame, the Data link layer of the destination computer unpacks, processes, and hands over that Ethernet frame to the upper layer for further processing.<br<br>' +
     'If multiple protocols are running in the upper (network) layer of the destination computer, the data link layer will fail to hand over the received frame to the upper layer as it does not know to which protocol it should give the received frame.<br><br>' +
     'The type field solves this issue. This field allows the sender computer to insert the information of the upper layer protocol. Through this information, the data link layer of the destination computer can easily determine the upper layer protocol to which it should hand over the received frame.<br><br>' +
-    'Modern LAN implementations mostly use the IP protocol in the network layer. There are two variants of the IP protocol; IPv4 and IPv6. If the type field has <b>0x800</b>, the frame is carrying the data of the IPv4 protocol. If the type field has value <b>0x86dd</b>, the frame is carrying the data of the IPv6 protocol.'
+    'Modern LAN implementations mostly use the IP protocol in the network layer. There are two variants of the IP protocol; IPv4 and IPv6. If the type field has <b>0x800</b>, the frame is carrying the data of the IPv4 protocol. If the type field has value <b>0x86dd</b>, the frame is carrying the data of the IPv6 protocol.<br><br>' +
+    '<b>Form Restriction: This value is set to 0x0800.</b>'
 ];
 
 let explanationI = [
@@ -61,35 +64,52 @@ let explanationT = [
     '<b>Form Restriction: So the Data Offset can range from the value 5 to 15.</b>',
     '<b>Explanation:</b><br><br>Reserved data in TCP headers always has a value of zero. This field aligns the total header size as a multiple of four bytes, which is important for the efficiency of computer data processing.<br><br>'+
     '<b>Form Restriction: This field is set to 0.</b>',
-    '<b>Explanation:</b><br><br>TCP uses a set of six standard and three extended control flags—each an individual bit representing On or Off—to manage data flow in specific situations.',
+    '<b>Explanation:</b><br><br>TCP uses a set of six standard and three extended control flags—each an individual bit representing On or Off—to manage data flow in specific situations.<br><br>' +
+    '<b>The user can choose multiple of the 9 Flags: </b> <ul> <li><b>NS</b>: ECN-nonce - concealment protection</li> <li><b>CWR</b>: Congestion window reduced flag is set by the sending host to indicate that it received a TCP segment with the ECE flag set and had responded in congestion control mechanism.</li>' +
+    '<li><b>ECE</b>: ECN-Echo has a dual role, depending on the value of the SYN flag.</li> <li><b>URG</b>: Indicates that the Urgent pointer field is significant.</li> <li><b>ACK</b>: Indicates that the Acknowledgment field is significant. All packets after the initial SYN packet sent by the client should have this flag set.</li>' +
+    '<li><b>PSH</b>: Push function. Asks to push the buffered data to the receiving application.</li> <li><b>RST</b>:  Reset the connection.</li> <li><b>SYN</b>: Synchronize sequence numbers. Only the first packet sent from each end should have this flag set.</li> <li><b>FIN</b>: Last packet from sender.</li></ul>',
     '<b>Explanation:</b><br><br>TCP senders use a number, called window size, to regulate how much data they send to a receiver before requiring an acknowledgment in return.<br><br>' +
     'If the window size is too small, network data transfer is unnecessarily slow. If the window size is too large, the network link may become saturated, or the receiver may not be able to process incoming data quickly enough, resulting in slow performance.<br><br>' +
-    'Windowing algorithms built into the protocol dynamically calculate size values and use this field of TCP headers to coordinate changes between senders and receivers.',
-    '<b>Explanation:</b><br><br>The checksum value inside a TCP header is generated by the protocol sender as a mathematical technique to help the receiver detect messages that are corrupted or tampered with.',
-    '<b>Explanation:</b><br><br>The urgent pointer field is often set to zero and ignored, but in conjunction with one of the control flags, it can be used as a data offset to mark a subset of a message as requiring priority processing.',
-    '<b>Explanation:</b><br><br>Usages of optional TCP data include support for special acknowledgment and window scaling algorithms.',
+    'Windowing algorithms built into the protocol dynamically calculate size values and use this field of TCP headers to coordinate changes between senders and receivers.<br><br>' +
+    '<b>Form Restriction: This field accepts values from 0 to 65535.</b>',
+    '<b>Explanation:</b><br><br>The checksum value inside a TCP header is generated by the protocol sender as a mathematical technique to help the receiver detect messages that are corrupted or tampered with.<br><br>' +
+    '<b>Form Restriction: This field accepts values from 0 to 65535.</b>',
+    '<b>Explanation:</b><br><br>The urgent pointer field is often set to zero and ignored, but in conjunction with one of the control flags, it can be used as a data offset to mark a subset of a message as requiring priority processing.<br><br>' +
+    '<b>Form Restriction: This field accepts values from 0 to 65535.</b>',
+    '<b>Explanation:</b><br><br>Usages of optional TCP data include support for special acknowledgment and window scaling algorithms.<br><br>' +
+    '<b>The user can choose 4 options with default values, them being: </b> <ul> <li><b>NOP</b>: No-Operation</li> <li><b>MSS</b>: Maximum Segment Size</li> <li><b>SAckOK</b>: Selective Acknowledgements</li> <li><b>Timestamp</b></li></ul>'
 ];
 
 let explanationU = [
     '<b>Explanation:</b><br><br>User datagram protocol (UDP) operates on top of the Internet Protocol (IP) to transmit datagrams over a network. UDP does not require the source and destination to establish a three-way handshake before transmission takes place. Additionally, there is no need for an end-to-end connection.<br><br>' +
     'Since UDP avoids the overhead associated with connections, error checks and the retransmission of missing data, it’s suitable for real-time or high performance applications that don’t require data verification or correction. If verification is needed, it can be performed at the application layer.',
-    '<b>Explanation:</b><br><br>The port of the device sending the data. This field can be set to zero if the destination computer doesn’t need to reply to the sender.',
-    '<b>Explanation:</b><br><br>The destination UDP port number is the communication endpoint for the receiving device.',
-    '<b>Explanation:</b><br><br>Specifies the number of bytes comprising the UDP header and the UDP payload data. The limit for the UDP length field is determined by the underlying IP protocol used to transmit the data.',
-    '<b>Explanation:</b><br><br>The checksum allows the receiving device to verify the integrity of the packet header and payload. It is optional in IPv4 but was made mandatory in IPv6.'
+    '<b>Explanation:</b><br><br>The port of the device sending the data. This field can be set to zero if the destination computer doesn’t need to reply to the sender.<br><br>' +
+    '<b>Form Restriction: This field accepts values from 0 to 65535.</b>',
+    '<b>Explanation:</b><br><br>The destination UDP port number is the communication endpoint for the receiving device.<br><br>' +
+    '<b>Form Restriction: This field accepts values from 0 to 65535.</b>',
+    '<b>Explanation:</b><br><br>Specifies the number of bytes comprising the UDP header and the UDP payload data. The limit for the UDP length field is determined by the underlying IP protocol used to transmit the data.<br><br>' +
+    '<b>Form Restriction: This field accepts values from 0 to 65535.</b>',
+    '<b>Explanation:</b><br><br>The checksum allows the receiving device to verify the integrity of the packet header and payload. It is optional in IPv4 but was made mandatory in IPv6.<br><br>' +
+    '<b>Form Restriction: This field accepts values from 0 to 65535.</b>'
 ];
 
 let explanationIC = [
     '<b>Explanation:</b><br><br>ICMP (Internet Control Message Protocol) is an error-reporting protocol that network devices such as routers use to generate error messages to the source IP address when network problems prevent delivery of IP packets. ICMP creates and sends messages to the source IP address indicating that a gateway to the internet, such as a router, service or host, cannot be reached for packet delivery. Any IP network device has the capability to send, receive or process ICMP messages.<br><br>' +
     'ICMP is not a transport protocol that sends data between systems.<br><br>' +
     'While ICMP is not used regularly in end-user applications, it is used by network administrators to troubleshoot internet connections in diagnostic utilities including ping and traceroute.',
-    '<b>Explanation:</b><br><br>The first 8 bits are the message types. Some common message types include the following:<ul><li>Type 0: Echo reply</li> <li>Type 3: Destination unreachable</li> <li>Type 5: Redirect</li> <li>Type 8: Echo</li></ul><br><br>' +
-    'The type provides a brief explanation of what the message is for so the receiving network device knows why it is getting the message and how to treat it.',
-    '<b>Explanation:</b><br><br>This field has 8 bits represent the message type code, which provides additional information about the error type.',
-    '<b>Explanation:</b><br><br>The last 16 bits provide a message integrity check. The checksum shows the number of bits in the entire message and enables the ICMP tool to check for consistency with the ICMP message header to make sure the full range of data was delivered.'
+    '<b>Explanation:</b><br><br>The first 8 bits are the message types. Some common message types include the following:<ul><li>Type 0: Echo reply</li> <li>Type 3: Destination unreachable</li> <li>Type 5: Redirect</li> <li>Type 8: Echo</li></ul><br>' +
+    'The type provides a brief explanation of what the message is for so the receiving network device knows why it is getting the message and how to treat it.<br><br>' +
+    '<b>Form Restriction: This field accepts values from 0 to 255.</b>',
+    '<b>Explanation:</b><br><br>This field has 8 bits represent the message type code, which provides additional information about the error type.<br><br>' +
+    '<b>Form Restriction: This field accepts values from 0 to 255.</b>',
+    '<b>Explanation:</b><br><br>The last 16 bits provide a message integrity check. The checksum shows the number of bits in the entire message and enables the ICMP tool to check for consistency with the ICMP message header to make sure the full range of data was delivered.<br><br>' +
+    '<b>Form Restriction: This field accepts values from 0 to 65535.</b>'
 ];
 
 let scanExplanation = '<b>Explanation:</b><br><br>The Internet Control Message Protocol (ICMP) is like the TCP protocol; both support protocols in the internet protocol suite. ICMP is used for checking live systems; ping is the most well-known utility that uses ICMP requests. Its principle is very simple—ICMP scanning sends requests to hosts and waits for an echo request to check whether the system is alive.';
+
+let appExplanation = '<b>Explanation:</b><br><br>The application layer is used by end-user software such as web browsers and email clients. It provides protocols that allow software to send and receive information and present meaningful data to users.';
+
 
 let imageUrlE = [
     '../../static/ipApp/images/Ethernet/Ethernet.png',
@@ -148,10 +168,11 @@ let imageUrlIC = [
 
 let imageScan = '../../static/ipApp/images/icmpScan.png';
 
+let appScan = '../../static/ipApp/images/applayer.png';
+
 function helpUser(title, text, url, packet) {
     let myModalEl = document.getElementById('helpModal');
 
-    console.log(title)
     myModalEl.addEventListener('shown.bs.modal', function (e) {
         document.getElementById('helpModalLabel').innerHTML = title;
         switch (packet) {
@@ -178,6 +199,10 @@ function helpUser(title, text, url, packet) {
             case 5:
                 document.getElementById('helpModalText').innerHTML = scanExplanation;
                 document.getElementById('helpModelImage').src = imageScan;
+                break;
+            case 6:
+                document.getElementById('helpModalText').innerHTML = appExplanation;
+                document.getElementById('helpModelImage').src = appScan;
                 break;
             default:
                 break;

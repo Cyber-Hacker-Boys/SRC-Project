@@ -65,7 +65,7 @@
                                     <label for="ethDesT" class="form-label">Destination Address(Mac)</label>&nbsp;<i
                                         class="fas fa-question-circle help" data-bs-toggle="modal" data-bs-target="#helpModal"
                                         onclick="helpUser('Destination Address', 1, 1, 0)"></i>
-                                    <input type="text" class="form-control" id="ethDesT" name="ethDesT" value="ff:ff:ff:ff:ff:ff">
+                                    <input type="text" class="form-control" id="ethDesT" name="ethDesT" value="ff:ff:ff:ff:ff:ff" disabled>
                                 </div>
                                 <div class="col-md-5">
                                     <label for="ethSrcT" class="form-label">Source Address(Mac)</label>&nbsp;<i
@@ -171,7 +171,7 @@
                         <div class="col-md-12">
                             <label for="destIPT" class="form-label">Destination Address(IP)</label> <i class="fas fa-question-circle help"
                                                                                   data-bs-toggle="modal" data-bs-target="#helpModal"
-                                                                                  onclick="helpUser('Source Address', 12, 12, 1)"></i>
+                                                                                  onclick="helpUser('Destination Address', 12, 12, 1)"></i>
                             <input type="text" class="form-control" id="destIPT" name="destIPT" value="192.168.1.2">
                         </div>
                     </div>
@@ -180,7 +180,7 @@
                         <div class="col-md-12">
                             <label for="optIPT" class="form-label">Options</label> <i class="fas fa-question-circle help"
                                                                                   data-bs-toggle="modal" data-bs-target="#helpModal"
-                                                                                  onclick="helpUser('Source Address', 13, 13, 1)"></i>
+                                                                                  onclick="helpUser('Options', 13, 13, 1)"></i>
                             <textarea type="text" class="form-control" id="optIPT" name="optIPT" data-bs-toggle="modal" data-bs-target="#optionsTModal" disabled></textarea>
                         </div>
                     </div>
@@ -277,7 +277,7 @@
                         </div>
 
                         <div class="packet data" id="dataATC">
-                            <h2>Application</h2>
+                            <h2 data-bs-toggle="modal" data-bs-target="#helpModal" onclick="helpUser('Application', 0, 0, 6)" class="help">Application</h2>
                             <div class="row p-2">
                                 <div class="col-md-12">
                                     <label for="dataTC" class="form-label">Raw Data</label>
@@ -412,7 +412,7 @@
                         <div class="col-md-12">
                             <label for="destIPU" class="form-label">Destination Address(IP)</label> <i class="fas fa-question-circle help"
                                                                                   data-bs-toggle="modal" data-bs-target="#helpModal"
-                                                                                  onclick="helpUser('Source Address', 12, 12, 1)"></i>
+                                                                                  onclick="helpUser('Destination Address', 12, 12, 1)"></i>
                             <input type="text" class="form-control" id="destIPU" name="destIPU" value="192.168.1.2">
                         </div>
                     </div>
@@ -421,7 +421,7 @@
                         <div class="col-md-12">
                             <label for="optIPU" class="form-label">Options</label> <i class="fas fa-question-circle help"
                                                                                   data-bs-toggle="modal" data-bs-target="#helpModal"
-                                                                                  onclick="helpUser('Source Address', 13, 13, 1)"></i>
+                                                                                  onclick="helpUser('Options', 13, 13, 1)"></i>
                             <textarea type="text" class="form-control" id="optIPU" name="optIPU" data-bs-toggle="modal" data-bs-target="#optionsTModal" disabled></textarea>
                         </div>
                     </div>
@@ -429,7 +429,7 @@
                 </div>
 
                         <div class="packet udp" id="udp">
-                            <h2 data-bs-toggle="modal" data-bs-target="#helpModal" onclick="helpUser('Ethernet Header', 0, 0, 3)" class="help">UDP Frame</h2>
+                            <h2 data-bs-toggle="modal" data-bs-target="#helpModal" onclick="helpUser('UDP Header', 0, 0, 3)" class="help">UDP Frame</h2>
                             <div class="row p-2">
                                 <div class="col-md-6">
                                     <label for="srcPortU" class="form-label">Source Port</label> <i class="fas fa-question-circle help"
@@ -440,7 +440,7 @@
                                 <div class="col-md-6">
                                     <label for="destPortU" class="form-label">Destination Port</label> <i class="fas fa-question-circle help"
                                                                                   data-bs-toggle="modal" data-bs-target="#helpModal"
-                                                                                  onclick="helpUser('Source Address', 2, 2, 3)"></i>
+                                                                                  onclick="helpUser('Destination Address', 2, 2, 3)"></i>
                                     <input type="number" class="form-control" id="destPortU" name="destPortU" value="600" min="0" max="65535">
                                 </div>
                             </div>
@@ -449,20 +449,20 @@
                                 <div class="col-md-6">
                                     <label for="lenU" class="form-label">Length</label> <i class="fas fa-question-circle help"
                                                                                   data-bs-toggle="modal" data-bs-target="#helpModal"
-                                                                                  onclick="helpUser('Source Address', 3, 3, 3)"></i>
+                                                                                  onclick="helpUser('Length', 3, 3, 3)"></i>
                                     <input type="number" class="form-control" id="lenU" name="lenU" min="0" max="65535" value="100">
                                 </div>
                                 <div class="col-md-6">
                                     <label for="checkSU" class="form-label">Checksum</label> <i class="fas fa-question-circle help"
                                                                                   data-bs-toggle="modal" data-bs-target="#helpModal"
-                                                                                  onclick="helpUser('Source Address', 4, 4, 3)"></i>
+                                                                                  onclick="helpUser('Checksum', 4, 4, 3)"></i>
                                     <input type="number" class="form-control" id="checkSU" name="checkSU" min="0" max="65535" value="200">
                                 </div>
                             </div>
                         </div>
 
                         <div class="packet data" id="dataAUD">
-                            <h2>Application</h2>
+                            <h2 data-bs-toggle="modal" data-bs-target="#helpModal" onclick="helpUser('Application', 0, 0, 6)" class="help">Application</h2>
                             <div class="row p-2">
                                 <div class="col-md-12">
                                     <label for="dataAU" class="form-label">Raw Data</label>
@@ -598,7 +598,7 @@
                         <div class="col-md-12">
                             <label for="destIPI" class="form-label">Destination Address(IP)</label> <i class="fas fa-question-circle help"
                                                                                   data-bs-toggle="modal" data-bs-target="#helpModal"
-                                                                                  onclick="helpUser('Source Address', 12, 12, 1)"></i>
+                                                                                  onclick="helpUser('Destination Address', 12, 12, 1)"></i>
                             <input type="text" class="form-control" id="destIPI" name="destIPI" value="192.168.1.2">
                         </div>
                     </div>
@@ -607,7 +607,7 @@
                         <div class="col-md-12">
                             <label for="optIPI" class="form-label">Options</label> <i class="fas fa-question-circle help"
                                                                                   data-bs-toggle="modal" data-bs-target="#helpModal"
-                                                                                  onclick="helpUser('Source Address', 13, 13, 1)"></i>
+                                                                                  onclick="helpUser('Options', 13, 13, 1)"></i>
                             <textarea type="text" class="form-control" id="optIPI" name="optIPI" data-bs-toggle="modal" data-bs-target="#optionsTModal" disabled></textarea>
                         </div>
                     </div>
@@ -615,31 +615,31 @@
                 </div>
 
                       <div class="packet icmp" id="icmp">
-                            <h2 data-bs-toggle="modal" data-bs-target="#helpModal" onclick="helpUser('Ethernet Header', 0, 0, 4)" class="help">ICMP Frame</h2>
+                            <h2 data-bs-toggle="modal" data-bs-target="#helpModal" onclick="helpUser('ICMP Header', 0, 0, 4)" class="help">ICMP Frame</h2>
                             <div class="row p-2">
                                 <div class="col-md-3">
                                     <label for="typeI" class="form-label">Type</label> <i class="fas fa-question-circle help"
                                                                                               data-bs-toggle="modal" data-bs-target="#helpModal"
-                                                                                              onclick="helpUser('TOS', 1, 1, 4)"></i>
+                                                                                              onclick="helpUser('Type', 1, 1, 4)"></i>
                                     <input type="number" class="form-control" id="typeI" name="typeI" value="8" min="0" max="255">
                                 </div>
                                 <div class="col-md-3">
                                     <label for="code" class="form-label">Code</label> <i class="fas fa-question-circle help"
                                                                                               data-bs-toggle="modal" data-bs-target="#helpModal"
-                                                                                              onclick="helpUser('TOS', 2, 2, 4)"></i>
+                                                                                              onclick="helpUser('Code', 2, 2, 4)"></i>
                                     <input type="number" class="form-control" id="code" name="codeI" value="0" min="0" max="255">
                                 </div>
                                 <div class="col-md-6">
                                     <label for="checkS" class="form-label">Checksum</label> <i class="fas fa-question-circle help"
                                                                                               data-bs-toggle="modal" data-bs-target="#helpModal"
-                                                                                              onclick="helpUser('TOS', 3, 3, 4)"></i>
+                                                                                              onclick="helpUser('Checksum', 3, 3, 4)"></i>
                                     <input type="number" class="form-control" id="checkS" name="checkS" value="123" min="0" max="65535">
                                 </div>
                             </div>
                         </div>
 
                         <div class="packet data" id="dataAIC">
-                            <h2>Application</h2>
+                            <h2 data-bs-toggle="modal" data-bs-target="#helpModal" onclick="helpUser('Application', 0, 0, 6)" class="help">Application</h2>
                             <div class="row p-2">
                                 <div class="col-md-12">
                                     <label for="dataAI" class="form-label">Raw Data</label>
@@ -663,13 +663,13 @@
                       <div class="row m-2">
                           <h2 style="margin-top: 20px; margin-bottom: 40px;" data-bs-toggle="modal" data-bs-target="#helpModal" onclick="helpUser('ICMP Scan', 0, 0, 5)" class="help">Scan your network for active IP's!</h2>
                           <div class="col-6">
-                            <label for="ICMPScan" class="form-label">Start Address(IP)</label> <i class="fas help"></i>
-                            <input type="text" class="form-control" id="startIPScan" name="startIPScan">
+                            <label for="startIPScan" class="form-label">Start Address(IP)</label> <i class="fas help"></i>
+                            <input type="text" class="form-control" id="startIPScan" name="startIPScan" value="192.168.1.80">
                           </div>
 
                           <div class="col-6">
-                            <label for="ICMPScan" class="form-label">End Address(IP)</label> <i class="fas help"></i>
-                            <input type="text" class="form-control" id="endIPScan" name="endIPScan">
+                            <label for="endIPScan" class="form-label">End Address(IP)</label> <i class="fas help"></i>
+                            <input type="text" class="form-control" id="endIPScan" name="endIPScan" value="192.168.1.85">
                           </div>
                       </div>
 
@@ -705,11 +705,11 @@
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="helpModalLabel">Modal title</h5>
+                    <h5 class="modal-title" id="helpModalLabel">Loading</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <img src="" alt="help image" id="helpModelImage">
+                    <img src="" alt="loading" id="helpModelImage">
                     <hr>
                     <div id="spinner">
                         <div class="spinner-border" role="status">

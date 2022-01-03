@@ -8,11 +8,19 @@ Since UDP avoids the overhead associated with connections, error checks and the 
 ###Source Port
 The port of the device sending the data. This field can be set to zero if the destination computer doesn’t need to reply to the sender.
 
+This field accepts values from 0 to 65535.
+
 ###Destination Port
 The destination UDP port number is the communication endpoint for the receiving device.
+
+This field accepts values from 0 to 65535.
 
 ###Length
 Specifies the number of bytes comprising the UDP header and the UDP payload data. The limit for the UDP length field is determined by the underlying IP protocol used to transmit the data.
 
+This field accepts values from 0 to 65535.
+
 ###Checksum
 The checksum allows the receiving device to verify the integrity of the packet header and payload. It is optional in IPv4 but was made mandatory in IPv6.
+
+This field accepts values from 0 to 65535.

@@ -1,12 +1,11 @@
+import socket
+
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
+from getmac import get_mac_address as gma
 from scapy.all import *
 from scapy.layers.inet import IP, ICMP
 from scapy.layers.inet import TCP, UDP
-from scapy.layers.l2 import Ether
-
-import socket
-from getmac import get_mac_address as gma
 
 
 # Create your views here.
@@ -74,7 +73,7 @@ def sendT(request):
         tcp = TCP(sport=srcPort, dport=destPort, seq=seqNum, ack=ackNum, dataofs=dOff, reserved=rBits, flags=cFlags,
                   window=winSize, chksum=checkST, urgptr=uPont, options=dataO)
 
-        send(ip / tcp / Raw(dataTT))
+        sendp(ip / tcp / Raw(dataTT))
 
         next = request.POST.get('next', '/')
         return HttpResponseRedirect(next)
@@ -111,8 +110,6 @@ def sendU(request):
         checkSU = int(request.POST['checkSU'])
 
         dataUD = request.POST['dataU']
-
-        eth = Ether(dst=dMac, src=eMac, type=typeT)
 
         ip = IP(version=version, ihl=ihl, tos=tos, len=lenI, id=ident, flags=flags, frag=fragment, ttl=ttl,
                 proto=protocol,
