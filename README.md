@@ -52,10 +52,12 @@ And to finally run the program do the following commands:
 
 ```
 $ cd IPForger
-$ python manage.py runserver  
+$ sudo python manage.py runserver  
 ```
 
 The project should the open in your localhost.
+
+It's important to run the command as sudo to ensure that the application as enough clerance to execute certain commands.
 
 ### WARNING ⚠️
 
