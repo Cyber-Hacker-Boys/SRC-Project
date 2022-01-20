@@ -73,7 +73,7 @@ def sendT(request):
         tcp = TCP(sport=srcPort, dport=destPort, seq=seqNum, ack=ackNum, dataofs=dOff, reserved=rBits, flags=cFlags,
                   window=winSize, chksum=checkST, urgptr=uPont, options=dataO)
 
-        sendp(ip / tcp / Raw(dataTT))
+        send(ip / tcp / Raw(dataTT))
 
         next = request.POST.get('next', '/')
         return HttpResponseRedirect(next)
