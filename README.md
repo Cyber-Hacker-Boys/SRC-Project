@@ -7,7 +7,7 @@
 
 ![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54) ![Django](https://img.shields.io/badge/django-%23092E20.svg?style=for-the-badge&logo=django&logoColor=white) ![Python](https://img.shields.io/badge/scapy-green?style=for-the-badge&logo=python&logoColor=blue)
 
-This the repository of our Network Security project for our Master Degree in Insecurity and Forensics.
+This the repository of our Network Security project for our Master Degree in Cibersecurity and Forensics.
 
 ### Goal 🏴
 IP forger is an web app made in python with the Django Framework, the goal of the app is to send customized network packets and
